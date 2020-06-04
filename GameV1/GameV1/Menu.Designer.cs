@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.pnlMenuBG = new System.Windows.Forms.Panel();
-            this.btnQuit = new System.Windows.Forms.Button();
-            this.btnCredits = new System.Windows.Forms.Button();
-            this.btnOptions = new System.Windows.Forms.Button();
-            this.btnPlay = new System.Windows.Forms.Button();
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.pnlBGAsset = new System.Windows.Forms.Panel();
+            this.btnPlay = new System.Windows.Forms.Button();
+            this.btnQuit = new System.Windows.Forms.Button();
+            this.btnOptions = new System.Windows.Forms.Button();
+            this.btnCredits = new System.Windows.Forms.Button();
             this.pnlMenuBG.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
@@ -48,33 +49,31 @@
             this.pnlMenuBG.Size = new System.Drawing.Size(800, 450);
             this.pnlMenuBG.TabIndex = 0;
             // 
-            // btnQuit
+            // pnlMenu
             // 
-            this.btnQuit.Location = new System.Drawing.Point(427, 199);
-            this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(124, 49);
-            this.btnQuit.TabIndex = 3;
-            this.btnQuit.Text = "Quit";
-            this.btnQuit.UseVisualStyleBackColor = true;
-            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            this.pnlMenu.BackgroundImage = global::GameV1.Properties.Resources.bgSky1;
+            this.pnlMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlMenu.Controls.Add(this.pnlBGAsset);
+            this.pnlMenu.Controls.Add(this.btnPlay);
+            this.pnlMenu.Controls.Add(this.btnQuit);
+            this.pnlMenu.Controls.Add(this.btnOptions);
+            this.pnlMenu.Controls.Add(this.btnCredits);
+            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMenu.Location = new System.Drawing.Point(0, 0);
+            this.pnlMenu.Name = "pnlMenu";
+            this.pnlMenu.Size = new System.Drawing.Size(800, 450);
+            this.pnlMenu.TabIndex = 4;
             // 
-            // btnCredits
+            // pnlBGAsset
             // 
-            this.btnCredits.Location = new System.Drawing.Point(427, 144);
-            this.btnCredits.Name = "btnCredits";
-            this.btnCredits.Size = new System.Drawing.Size(124, 49);
-            this.btnCredits.TabIndex = 2;
-            this.btnCredits.Text = "Credits";
-            this.btnCredits.UseVisualStyleBackColor = true;
-            // 
-            // btnOptions
-            // 
-            this.btnOptions.Location = new System.Drawing.Point(427, 85);
-            this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(124, 49);
-            this.btnOptions.TabIndex = 1;
-            this.btnOptions.Text = "Options";
-            this.btnOptions.UseVisualStyleBackColor = true;
+            this.pnlBGAsset.BackColor = System.Drawing.Color.Transparent;
+            this.pnlBGAsset.BackgroundImage = global::GameV1.Properties.Resources.far_grounds;
+            this.pnlBGAsset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlBGAsset.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlBGAsset.Location = new System.Drawing.Point(0, 230);
+            this.pnlBGAsset.Name = "pnlBGAsset";
+            this.pnlBGAsset.Size = new System.Drawing.Size(800, 220);
+            this.pnlBGAsset.TabIndex = 4;
             // 
             // btnPlay
             // 
@@ -86,19 +85,34 @@
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
-            // pnlMenu
+            // btnQuit
             // 
-            this.pnlMenu.BackgroundImage = global::GameV1.Properties.Resources.bgSky1;
-            this.pnlMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlMenu.Controls.Add(this.btnPlay);
-            this.pnlMenu.Controls.Add(this.btnQuit);
-            this.pnlMenu.Controls.Add(this.btnOptions);
-            this.pnlMenu.Controls.Add(this.btnCredits);
-            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMenu.Location = new System.Drawing.Point(0, 0);
-            this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(800, 450);
-            this.pnlMenu.TabIndex = 4;
+            this.btnQuit.Location = new System.Drawing.Point(427, 199);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(124, 49);
+            this.btnQuit.TabIndex = 3;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
+            // btnOptions
+            // 
+            this.btnOptions.Location = new System.Drawing.Point(427, 85);
+            this.btnOptions.Name = "btnOptions";
+            this.btnOptions.Size = new System.Drawing.Size(124, 49);
+            this.btnOptions.TabIndex = 1;
+            this.btnOptions.Text = "Options";
+            this.btnOptions.UseVisualStyleBackColor = true;
+            // 
+            // btnCredits
+            // 
+            this.btnCredits.Location = new System.Drawing.Point(427, 144);
+            this.btnCredits.Name = "btnCredits";
+            this.btnCredits.Size = new System.Drawing.Size(124, 49);
+            this.btnCredits.TabIndex = 2;
+            this.btnCredits.Text = "Credits";
+            this.btnCredits.UseVisualStyleBackColor = true;
+            this.btnCredits.Click += new System.EventHandler(this.btnCredits_Click);
             // 
             // Menu
             // 
@@ -126,5 +140,6 @@
         private System.Windows.Forms.Button btnCredits;
         private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.Panel pnlMenu;
+        private System.Windows.Forms.Panel pnlBGAsset;
     }
 }

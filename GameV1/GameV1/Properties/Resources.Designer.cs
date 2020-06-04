@@ -83,6 +83,16 @@ namespace GameV1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap far_grounds {
+            get {
+                object obj = ResourceManager.GetObject("far-grounds", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Game_Title {
             get {
                 object obj = ResourceManager.GetObject("Game Title", resourceCulture);

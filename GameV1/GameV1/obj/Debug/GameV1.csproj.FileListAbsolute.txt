@@ -42,3 +42,4 @@ C:\Users\7jrandal\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debu
 C:\Users\7jrandal\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.csproj.CoreCompileInputs.cache
 C:\Users\7jrandal\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.exe
 C:\Users\7jrandal\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.pdb
+C:\Users\7jrandal\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.Game.resources

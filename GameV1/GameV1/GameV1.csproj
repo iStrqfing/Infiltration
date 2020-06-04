@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game.Designer.cs">
+      <DependentUpon>Game.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameSplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Game.resx">
+      <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameSplashScreen.resx">
       <DependentUpon>GameSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -121,6 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\gameBG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\far-grounds.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

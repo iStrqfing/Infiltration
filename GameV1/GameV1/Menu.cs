@@ -22,7 +22,7 @@ namespace GameV1
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            SplashScreen form = new SplashScreen();
+            Game form = new Game();
             form.Show();
             this.Hide();
         }
@@ -53,6 +53,11 @@ namespace GameV1
             {
                 System.Environment.Exit(0);
             }
+        }
+
+        private void btnCredits_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
