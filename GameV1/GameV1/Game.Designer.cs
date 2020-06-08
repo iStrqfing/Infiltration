@@ -29,17 +29,39 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pnlBG = new System.Windows.Forms.Panel();
-            this.pnlCharacter = new System.Windows.Forms.Panel();
             this.tmrLeftMovement = new System.Windows.Forms.Timer(this.components);
             this.tmrRightMovement = new System.Windows.Forms.Timer(this.components);
             this.tmrJump = new System.Windows.Forms.Timer(this.components);
             this.tmrGravity = new System.Windows.Forms.Timer(this.components);
+            this.pnlBG = new System.Windows.Forms.Panel();
+            this.pnlCharacter = new System.Windows.Forms.Panel();
+            this.tmrGame = new System.Windows.Forms.Timer(this.components);
+            this.tmrPlayerMovement = new System.Windows.Forms.Timer(this.components);
             this.pnlBG.SuspendLayout();
             this.SuspendLayout();
             // 
+            // tmrLeftMovement
+            // 
+            this.tmrLeftMovement.Interval = 10;
+            // 
+            // tmrRightMovement
+            // 
+            this.tmrRightMovement.Interval = 10;
+            // 
+            // tmrJump
+            // 
+            this.tmrJump.Enabled = true;
+            this.tmrJump.Interval = 10;
+            // 
+            // tmrGravity
+            // 
+            this.tmrGravity.Interval = 10;
+            this.tmrGravity.Tick += new System.EventHandler(this.tmrGravity_Tick);
+            // 
             // pnlBG
             // 
+            this.pnlBG.BackgroundImage = global::GameV1.Properties.Resources.sea;
+            this.pnlBG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlBG.Controls.Add(this.pnlCharacter);
             this.pnlBG.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBG.Location = new System.Drawing.Point(0, 0);
@@ -55,25 +77,17 @@
             this.pnlCharacter.Size = new System.Drawing.Size(50, 50);
             this.pnlCharacter.TabIndex = 0;
             // 
-            // tmrLeftMovement
+            // tmrGame
             // 
-            this.tmrLeftMovement.Interval = 10;
-            this.tmrLeftMovement.Tick += new System.EventHandler(this.tmrLeftMovement_Tick);
+            this.tmrGame.Enabled = true;
+            this.tmrGame.Interval = 10;
+            this.tmrGame.Tick += new System.EventHandler(this.tmrGame_Tick);
             // 
-            // tmrRightMovement
+            // tmrPlayerMovement
             // 
-            this.tmrRightMovement.Interval = 10;
-            this.tmrRightMovement.Tick += new System.EventHandler(this.tmrRightMovement_Tick);
-            // 
-            // tmrJump
-            // 
-            this.tmrJump.Interval = 10;
-            this.tmrJump.Tick += new System.EventHandler(this.tmrJump_Tick);
-            // 
-            // tmrGravity
-            // 
-            this.tmrGravity.Interval = 10;
-            this.tmrGravity.Tick += new System.EventHandler(this.tmrGravity_Tick);
+            this.tmrPlayerMovement.Enabled = true;
+            this.tmrPlayerMovement.Interval = 10;
+            this.tmrPlayerMovement.Tick += new System.EventHandler(this.tmrPlayerMovement_Tick);
             // 
             // Game
             // 
@@ -98,5 +112,7 @@
         private System.Windows.Forms.Timer tmrRightMovement;
         private System.Windows.Forms.Timer tmrJump;
         private System.Windows.Forms.Timer tmrGravity;
+        private System.Windows.Forms.Timer tmrGame;
+        private System.Windows.Forms.Timer tmrPlayerMovement;
     }
 }

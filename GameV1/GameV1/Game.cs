@@ -17,6 +17,15 @@ namespace GameV1
             InitializeComponent();
         }
 
+        static int speed = 5; // Character movement speed
+        static int speedJump = 12; // Jump speed
+        static int jumpSpeed = speedJump; // Character jumping speed
+        static int gravityForce = 9; // How fast the character falls
+        static bool jumping = false; // Is the character jumping
+
+        static bool movingRight = false;
+        static bool movingLeft = false;
+
         protected override CreateParams CreateParams // Prevents flickering when loading images
         {
             get
@@ -29,13 +38,13 @@ namespace GameV1
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Space) // Jump
+            if (e.KeyCode == Keys.Space && !jumping) // Jump if character is not jumping
             {
-                tmrJump.Start();
+                jumping = true;                             
             }
             if (e.KeyCode == Keys.A) // Move left
             {
-                tmrLeftMovement.Start();
+                movingLeft = true;
             }
             if (e.KeyCode == Keys.S) // Fast fall
             {
@@ -43,39 +52,28 @@ namespace GameV1
             }
             if (e.KeyCode == Keys.D) // Move right
             {
-                tmrRightMovement.Start();
+                movingRight = true;
             }
         }
 
-        private void tmrLeftMovement_Tick(object sender, EventArgs e)
-        {
-            pnlCharacter.Left -= 5;
-        }
-
-        private void tmrRightMovement_Tick(object sender, EventArgs e)
-        {
-            pnlCharacter.Left += 5;
-        }
-
-        private void tmrJump_Tick(object sender, EventArgs e)
-        {
-            pnlCharacter.Top -= 5;
-        }
 
         private void tmrGravity_Tick(object sender, EventArgs e)
         {
-            pnlCharacter.Top += 5;
+            pnlCharacter.Top += speed;
         }
 
         private void Game_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space) // Jump
             {
-                tmrJump.Stop();
+                if (jumping)
+                {
+                    jumping = false;
+                }               
             }
             if (e.KeyCode == Keys.A) // Move left
             {
-                tmrLeftMovement.Stop();
+                movingLeft = false;
             }
             if (e.KeyCode == Keys.S) // Fast fall
             {
@@ -83,8 +81,44 @@ namespace GameV1
             }
             if (e.KeyCode == Keys.D) // Move right
             {
-                tmrRightMovement.Stop();
+                movingRight = false;
             }
+        }
+
+        private void tmrGame_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tmrPlayerMovement_Tick(object sender, EventArgs e)
+        {
+
+            //pnlCharacter.Top += jumpSpeed;
+            if (jumping && gravityForce < 0) // Checks whether player is jumping
+            {
+                jumping = false;
+            }
+
+            if (jumping)
+            {
+                jumpSpeed = -speedJump;
+                gravityForce -= 1;
+            }
+            else
+            {
+                jumpSpeed = speedJump;
+            }
+
+            if (movingRight == true)
+            {
+                pnlCharacter.Left += speed;
+            }
+
+            if (movingLeft == true)
+            {
+                pnlCharacter.Left -= speed;
+            }
+
         }
     }
 }
