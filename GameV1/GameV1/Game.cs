@@ -18,8 +18,9 @@ namespace GameV1
         }
 
         static int speed = 5; // Character movement speed
-        static int speedJump = 12; // Jump speed
+        static int speedJump = 24; // Jump speed
         static int jumpSpeed = speedJump; // Character jumping speed
+        const int constantGravityForce = 9;
         static int gravityForce = 9; // How fast the character falls
         static bool jumping = false; // Is the character jumping
 
@@ -48,7 +49,6 @@ namespace GameV1
             }
             if (e.KeyCode == Keys.S) // Fast fall
             {
-                tmrGravity.Start();
             }
             if (e.KeyCode == Keys.D) // Move right
             {
@@ -57,16 +57,13 @@ namespace GameV1
         }
 
 
-        private void tmrGravity_Tick(object sender, EventArgs e)
-        {
-            pnlCharacter.Top += speed;
-        }
+
 
         private void Game_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space) // Jump
             {
-                if (jumping)
+                if (jumping == true)
                 {
                     jumping = false;
                 }               
@@ -77,7 +74,6 @@ namespace GameV1
             }
             if (e.KeyCode == Keys.S) // Fast fall
             {
-                tmrGravity.Stop();
             }
             if (e.KeyCode == Keys.D) // Move right
             {
@@ -93,13 +89,13 @@ namespace GameV1
         private void tmrPlayerMovement_Tick(object sender, EventArgs e)
         {
 
-            //pnlCharacter.Top += jumpSpeed;
+            pnlCharacter.Top += jumpSpeed;
             if (jumping && gravityForce < 0) // Checks whether player is jumping
             {
                 jumping = false;
             }
 
-            if (jumping)
+            if (jumping == true)
             {
                 jumpSpeed = -speedJump;
                 gravityForce -= 1;
@@ -118,6 +114,31 @@ namespace GameV1
             {
                 pnlCharacter.Left -= speed;
             }
+
+            //            
+
+            // x of platform 
+           // pnlMiddleGround.Location.X
+
+            foreach (Control ground in pnlBG.Controls)
+            {
+                if (ground is Panel && ground.Tag == "platform")
+                {
+                    if (pnlCharacter.Bounds.IntersectsWith(ground.Bounds) && !jumping)
+                    {
+                        gravityForce = constantGravityForce;
+                        pnlCharacter.Top = ground.Top - pnlCharacter.Height;
+                    }
+                }
+            }
+
+        }
+
+        private void Game_Load(object sender, EventArgs e)
+        {
+            pnlCharacter.BringToFront();
+            pnlCharacter.Refresh();
+            //pnlCharacter.Location = new Point (-2, -11);
 
         }
     }

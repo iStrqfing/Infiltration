@@ -58,6 +58,12 @@
     <Compile Include="GameSplashScreen.Designer.cs">
       <DependentUpon>GameSplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameTest.Designer.cs">
+      <DependentUpon>GameTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="LevelSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\groundPlatform.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\groundMiddleGrassyPlatform.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clouds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sky.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clouds1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -43,3 +43,15 @@ C:\Users\7jrandal\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debu
 C:\Users\7jrandal\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.exe
 C:\Users\7jrandal\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.pdb
 C:\Users\7jrandal\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.Game.resources
+C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\bin\Debug\GameV1.exe.config
+C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\bin\Debug\GameV1.exe
+C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\bin\Debug\GameV1.pdb
+C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.csprojAssemblyReference.cache
+C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.Game.resources
+C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.GameSplashScreen.resources
+C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.Menu.resources
+C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.Properties.Resources.resources
+C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.SplashScreen.resources
+C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.csproj.GenerateResource.cache
+C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.exe
+C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.pdb
