@@ -34,8 +34,8 @@
             this.tmrJump = new System.Windows.Forms.Timer(this.components);
             this.tmrGame = new System.Windows.Forms.Timer(this.components);
             this.tmrPlayerMovement = new System.Windows.Forms.Timer(this.components);
-            this.pnlBG = new System.Windows.Forms.Panel();
-            this.pnlCharacter = new System.Windows.Forms.Panel();
+            this.pnlBG = new DoubleBufferedPanel();
+            this.pnlCharacter = new DoubleBufferedPanel();
             this.pnlSky = new System.Windows.Forms.Panel();
             this.pnlClouds = new System.Windows.Forms.Panel();
             this.pnlMiddleGround = new System.Windows.Forms.Panel();
@@ -90,10 +90,12 @@
             // 
             // pnlCharacter
             // 
-            this.pnlCharacter.BackColor = System.Drawing.Color.Black;
-            this.pnlCharacter.Location = new System.Drawing.Point(332, 42);
+            this.pnlCharacter.BackColor = System.Drawing.Color.Transparent;
+            this.pnlCharacter.BackgroundImage = global::GameV1.Properties.Resources.testCharacter1;
+            this.pnlCharacter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlCharacter.Location = new System.Drawing.Point(282, 12);
             this.pnlCharacter.Name = "pnlCharacter";
-            this.pnlCharacter.Size = new System.Drawing.Size(50, 50);
+            this.pnlCharacter.Size = new System.Drawing.Size(68, 78);
             this.pnlCharacter.TabIndex = 0;
             this.pnlCharacter.Tag = "player";
             // 
@@ -170,6 +172,7 @@
             this.pnlWater.Name = "pnlWater";
             this.pnlWater.Size = new System.Drawing.Size(800, 194);
             this.pnlWater.TabIndex = 4;
+            this.pnlWater.Tag = "";
             // 
             // Game
             // 
@@ -191,8 +194,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlBG;
-        private System.Windows.Forms.Panel pnlCharacter;
+        private DoubleBufferedPanel pnlBG;
+        private DoubleBufferedPanel pnlCharacter;
         private System.Windows.Forms.Timer tmrLeftMovement;
         private System.Windows.Forms.Timer tmrRightMovement;
         private System.Windows.Forms.Timer tmrJump;

@@ -13,8 +13,10 @@ namespace GameV1
     public partial class GameSplashScreen : Form
     {
 
-
-        protected override CreateParams CreateParams // Prevents flickering when loading images
+        /// <summary>
+        /// Prevents flickering when loading images
+        /// </summary>
+        protected override CreateParams CreateParams
         {
             get
             {

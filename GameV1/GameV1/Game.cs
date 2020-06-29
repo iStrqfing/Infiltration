@@ -12,10 +12,24 @@ namespace GameV1
 {
     public partial class Game : Form
     {
+
+        protected override CreateParams CreateParams // Prevents flickering when loading images
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+
         public Game()
         {
             InitializeComponent();
         }
+
+        static int height = SystemInformation.VirtualScreen.Height;
+        static int width = SystemInformation.VirtualScreen.Width;
 
         static int speed = 5; // Character movement speed
         static int speedJump = 24; // Jump speed
@@ -27,15 +41,20 @@ namespace GameV1
         static bool movingRight = false;
         static bool movingLeft = false;
 
-        protected override CreateParams CreateParams // Prevents flickering when loading images
+
+        public class DoubleBufferedPanel : Panel
         {
-            get
+            public DoubleBufferedPanel()
             {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
+                this.SetStyle(ControlStyles.AllPaintingInWmPaint |
+                    ControlStyles.OptimizedDoubleBuffer |
+                    ControlStyles.UserPaint, true);
             }
         }
+
+
+
+
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
@@ -83,12 +102,17 @@ namespace GameV1
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
-
+            if (pnlCharacter.Location.Y > height + 500)
+            {
+                Menu form = new Menu();
+                form.Show();
+                this.Hide();
+                tmrGame.Stop();
+            }
         }
 
         private void tmrPlayerMovement_Tick(object sender, EventArgs e)
         {
-
             pnlCharacter.Top += jumpSpeed;
             if (jumping && gravityForce < 0) // Checks whether player is jumping
             {
@@ -131,15 +155,15 @@ namespace GameV1
                     }
                 }
             }
-
         }
 
         private void Game_Load(object sender, EventArgs e)
         {
             pnlCharacter.BringToFront();
             pnlCharacter.Refresh();
-            //pnlCharacter.Location = new Point (-2, -11);
-
+            this.DoubleBuffered = true;
         }
+
+
     }
 }

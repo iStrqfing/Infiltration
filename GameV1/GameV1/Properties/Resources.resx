@@ -118,17 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="gameBG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\gameBG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="sea" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sea.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="far-grounds" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\far-grounds.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sky" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sky.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="clouds" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\clouds.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="testCharacter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\testCharacter.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bgSky1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\bgSky1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,25 +130,37 @@
   <data name="GameTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\GameTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cool-logos-png" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\cool-logos-png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sea" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sea.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Game Title" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\Game Title.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="groundMiddleGrassyPlatform" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\groundMiddleGrassyPlatform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cool-logos-png" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\cool-logos-png.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="sky" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sky.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="groundPlatform" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\groundPlatform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="clouds" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clouds.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gameBG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\gameBG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="far-grounds" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\far-grounds.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="groundMiddleGrassyPlatform" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\groundMiddleGrassyPlatform.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="clouds1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clouds1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="testCharacter1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\testCharacter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,7 +30,8 @@ namespace GameV1
 
         private void Menu_Load(object sender, EventArgs e)
         {
-
+            SoundPlayer simpleSound = new SoundPlayer(@"K:\12IA\Downloads\Lurid Delusion.wav");
+            simpleSound.Play();
             AlignBtns();
         }
         
