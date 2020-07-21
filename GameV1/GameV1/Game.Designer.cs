@@ -34,18 +34,20 @@
             this.tmrJump = new System.Windows.Forms.Timer(this.components);
             this.tmrGame = new System.Windows.Forms.Timer(this.components);
             this.tmrPlayerMovement = new System.Windows.Forms.Timer(this.components);
-            this.pnlBG = new DoubleBufferedPanel();
-            this.pnlCharacter = new DoubleBufferedPanel();
-            this.pnlSky = new System.Windows.Forms.Panel();
-            this.pnlClouds = new System.Windows.Forms.Panel();
-            this.pnlMiddleGround = new System.Windows.Forms.Panel();
-            this.pnlGround = new System.Windows.Forms.Panel();
-            this.pnlGroundStart = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlWater = new System.Windows.Forms.Panel();
-            this.pnlBG.SuspendLayout();
-            this.pnlSky.SuspendLayout();
-            this.pnlGround.SuspendLayout();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Player = new System.Windows.Forms.PictureBox();
+            this.pctBackground = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctBackground)).BeginInit();
             this.SuspendLayout();
             // 
             // tmrLeftMovement
@@ -73,140 +75,124 @@
             this.tmrPlayerMovement.Interval = 10;
             this.tmrPlayerMovement.Tick += new System.EventHandler(this.tmrPlayerMovement_Tick);
             // 
-            // pnlBG
+            // pictureBox5
             // 
-            this.pnlBG.BackgroundImage = global::GameV1.Properties.Resources.sky;
-            this.pnlBG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlBG.Controls.Add(this.pnlCharacter);
-            this.pnlBG.Controls.Add(this.pnlSky);
-            this.pnlBG.Controls.Add(this.pnlMiddleGround);
-            this.pnlBG.Controls.Add(this.pnlGround);
-            this.pnlBG.Controls.Add(this.pnlWater);
-            this.pnlBG.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBG.Location = new System.Drawing.Point(0, 0);
-            this.pnlBG.Name = "pnlBG";
-            this.pnlBG.Size = new System.Drawing.Size(800, 450);
-            this.pnlBG.TabIndex = 0;
+            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox5.BackgroundImage = global::GameV1.Properties.Resources.Gold;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox5.Location = new System.Drawing.Point(1339, 196);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox5.TabIndex = 7;
+            this.pictureBox5.TabStop = false;
             // 
-            // pnlCharacter
+            // pictureBox4
             // 
-            this.pnlCharacter.BackColor = System.Drawing.Color.Transparent;
-            this.pnlCharacter.BackgroundImage = global::GameV1.Properties.Resources.testCharacter1;
-            this.pnlCharacter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlCharacter.Location = new System.Drawing.Point(282, 12);
-            this.pnlCharacter.Name = "pnlCharacter";
-            this.pnlCharacter.Size = new System.Drawing.Size(68, 78);
-            this.pnlCharacter.TabIndex = 0;
-            this.pnlCharacter.Tag = "player";
+            this.pictureBox4.BackgroundImage = global::GameV1.Properties.Resources.groundMiddleGrassyPlatform;
+            this.pictureBox4.Location = new System.Drawing.Point(136, 85);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(506, 35);
+            this.pictureBox4.TabIndex = 6;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Tag = "platform";
             // 
-            // pnlSky
+            // pictureBox3
             // 
-            this.pnlSky.BackColor = System.Drawing.Color.Transparent;
-            this.pnlSky.Controls.Add(this.pnlClouds);
-            this.pnlSky.Location = new System.Drawing.Point(3, 100);
-            this.pnlSky.Name = "pnlSky";
-            this.pnlSky.Size = new System.Drawing.Size(800, 155);
-            this.pnlSky.TabIndex = 3;
+            this.pictureBox3.BackgroundImage = global::GameV1.Properties.Resources.groundMiddleGrassyPlatform;
+            this.pictureBox3.Location = new System.Drawing.Point(836, 106);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(97, 35);
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Tag = "platform";
             // 
-            // pnlClouds
+            // pictureBox2
             // 
-            this.pnlClouds.BackColor = System.Drawing.Color.Transparent;
-            this.pnlClouds.BackgroundImage = global::GameV1.Properties.Resources.clouds;
-            this.pnlClouds.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlClouds.Location = new System.Drawing.Point(0, -2);
-            this.pnlClouds.Name = "pnlClouds";
-            this.pnlClouds.Size = new System.Drawing.Size(800, 157);
-            this.pnlClouds.TabIndex = 2;
+            this.pictureBox2.BackgroundImage = global::GameV1.Properties.Resources.groundMiddleGrassyPlatform;
+            this.pictureBox2.Location = new System.Drawing.Point(836, 252);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(605, 35);
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Tag = "platform";
             // 
-            // pnlMiddleGround
+            // pictureBox1
             // 
-            this.pnlMiddleGround.BackgroundImage = global::GameV1.Properties.Resources.groundMiddleGrassyPlatform;
-            this.pnlMiddleGround.Location = new System.Drawing.Point(251, 256);
-            this.pnlMiddleGround.Name = "pnlMiddleGround";
-            this.pnlMiddleGround.Size = new System.Drawing.Size(565, 34);
-            this.pnlMiddleGround.TabIndex = 1;
-            this.pnlMiddleGround.Tag = "";
+            this.pictureBox1.BackgroundImage = global::GameV1.Properties.Resources.groundMiddleGrassyPlatform;
+            this.pictureBox1.Location = new System.Drawing.Point(179, 355);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(605, 35);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "platform";
             // 
-            // pnlGround
+            // Player
             // 
-            this.pnlGround.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlGround.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(32)))), ((int)(((byte)(36)))));
-            this.pnlGround.Controls.Add(this.pnlGroundStart);
-            this.pnlGround.Controls.Add(this.panel1);
-            this.pnlGround.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.pnlGround.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pnlGround.Location = new System.Drawing.Point(161, 256);
-            this.pnlGround.Name = "pnlGround";
-            this.pnlGround.Size = new System.Drawing.Size(642, 194);
-            this.pnlGround.TabIndex = 1;
-            this.pnlGround.Tag = "platform";
+            this.Player.BackColor = System.Drawing.Color.Transparent;
+            this.Player.BackgroundImage = global::GameV1.Properties.Resources.testCharacter1;
+            this.Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Player.Location = new System.Drawing.Point(489, 238);
+            this.Player.Name = "Player";
+            this.Player.Size = new System.Drawing.Size(68, 78);
+            this.Player.TabIndex = 2;
+            this.Player.TabStop = false;
             // 
-            // pnlGroundStart
+            // pctBackground
             // 
-            this.pnlGroundStart.BackColor = System.Drawing.Color.Transparent;
-            this.pnlGroundStart.BackgroundImage = global::GameV1.Properties.Resources.groundPlatform;
-            this.pnlGroundStart.Location = new System.Drawing.Point(-2, -11);
-            this.pnlGroundStart.Name = "pnlGroundStart";
-            this.pnlGroundStart.Size = new System.Drawing.Size(94, 112);
-            this.pnlGroundStart.TabIndex = 0;
-            this.pnlGroundStart.Tag = "";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::GameV1.Properties.Resources.groundPlatform;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(-5, 63);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(94, 112);
-            this.panel1.TabIndex = 1;
-            this.panel1.Tag = "";
-            // 
-            // pnlWater
-            // 
-            this.pnlWater.BackColor = System.Drawing.Color.Transparent;
-            this.pnlWater.BackgroundImage = global::GameV1.Properties.Resources.sea;
-            this.pnlWater.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlWater.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlWater.Location = new System.Drawing.Point(0, 256);
-            this.pnlWater.Name = "pnlWater";
-            this.pnlWater.Size = new System.Drawing.Size(800, 194);
-            this.pnlWater.TabIndex = 4;
-            this.pnlWater.Tag = "";
+            this.pctBackground.BackColor = System.Drawing.Color.Black;
+            this.pctBackground.BackgroundImage = global::GameV1.Properties.Resources.sky;
+            this.pctBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pctBackground.Location = new System.Drawing.Point(0, 0);
+            this.pctBackground.Name = "pctBackground";
+            this.pctBackground.Size = new System.Drawing.Size(2000, 460);
+            this.pctBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pctBackground.TabIndex = 1;
+            this.pctBackground.TabStop = false;
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pnlBG);
+            this.ClientSize = new System.Drawing.Size(1924, 461);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.Player);
+            this.Controls.Add(this.pctBackground);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Game";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game";
             this.Load += new System.EventHandler(this.Game_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Game_KeyUp);
-            this.pnlBG.ResumeLayout(false);
-            this.pnlSky.ResumeLayout(false);
-            this.pnlGround.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctBackground)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private DoubleBufferedPanel pnlBG;
-        private DoubleBufferedPanel pnlCharacter;
         private System.Windows.Forms.Timer tmrLeftMovement;
         private System.Windows.Forms.Timer tmrRightMovement;
         private System.Windows.Forms.Timer tmrJump;
         private System.Windows.Forms.Timer tmrGame;
         private System.Windows.Forms.Timer tmrPlayerMovement;
-        private System.Windows.Forms.Panel pnlGround;
-        private System.Windows.Forms.Panel pnlGroundStart;
-        private System.Windows.Forms.Panel pnlMiddleGround;
-        private System.Windows.Forms.Panel pnlClouds;
-        private System.Windows.Forms.Panel pnlSky;
-        private System.Windows.Forms.Panel pnlWater;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pctBackground;
+        private System.Windows.Forms.PictureBox Player;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }

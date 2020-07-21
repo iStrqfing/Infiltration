@@ -30,8 +30,7 @@ namespace GameV1
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"K:\12IA\Downloads\Lurid Delusion.wav");
-            simpleSound.Play();
+            
             AlignBtns();
         }
         

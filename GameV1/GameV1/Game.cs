@@ -31,8 +31,8 @@ namespace GameV1
         static int height = SystemInformation.VirtualScreen.Height;
         static int width = SystemInformation.VirtualScreen.Width;
 
-        static int speed = 5; // Character movement speed
-        static int speedJump = 24; // Jump speed
+        static int speed = 6; // Character movement speed
+        static int speedJump = 16; // Jump speed
         static int jumpSpeed = speedJump; // Character jumping speed
         const int constantGravityForce = 9;
         static int gravityForce = 9; // How fast the character falls
@@ -102,7 +102,7 @@ namespace GameV1
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
-            if (pnlCharacter.Location.Y > height + 500)
+            if (Player.Location.Y > height + 500)
             {
                 Menu form = new Menu();
                 form.Show();
@@ -113,7 +113,7 @@ namespace GameV1
 
         private void tmrPlayerMovement_Tick(object sender, EventArgs e)
         {
-            pnlCharacter.Top += jumpSpeed;
+            Player.Top += jumpSpeed;
             if (jumping && gravityForce < 0) // Checks whether player is jumping
             {
                 jumping = false;
@@ -131,12 +131,12 @@ namespace GameV1
 
             if (movingRight == true)
             {
-                pnlCharacter.Left += speed;
+                Player.Left += speed;
             }
 
             if (movingLeft == true)
             {
-                pnlCharacter.Left -= speed;
+                Player.Left -= speed;
             }
 
             //            
@@ -144,14 +144,14 @@ namespace GameV1
             // x of platform 
            // pnlMiddleGround.Location.X
 
-            foreach (Control ground in pnlBG.Controls)
+            foreach (Control ground in Controls)
             {
-                if (ground is Panel && ground.Tag == "platform")
+                if (ground is PictureBox && ground.Tag == "platform")
                 {
-                    if (pnlCharacter.Bounds.IntersectsWith(ground.Bounds) && !jumping)
+                    if (Player.Bounds.IntersectsWith(ground.Bounds) && !jumping)
                     {
                         gravityForce = constantGravityForce;
-                        pnlCharacter.Top = ground.Top - pnlCharacter.Height;
+                        Player.Top = ground.Top - Player.Height;
                     }
                 }
             }
@@ -159,11 +159,14 @@ namespace GameV1
 
         private void Game_Load(object sender, EventArgs e)
         {
-            pnlCharacter.BringToFront();
-            pnlCharacter.Refresh();
+            Player.BringToFront();
+            Player.Refresh();
             this.DoubleBuffered = true;
         }
 
+        private void pnlBG_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
     }
 }
