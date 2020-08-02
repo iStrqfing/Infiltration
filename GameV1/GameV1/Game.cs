@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,15 +32,69 @@ namespace GameV1
         static int height = SystemInformation.VirtualScreen.Height;
         static int width = SystemInformation.VirtualScreen.Width;
 
-        static int speed = 6; // Character movement speed
-        static int speedJump = 16; // Jump speed
-        static int jumpSpeed = speedJump; // Character jumping speed
-        const int constantGravityForce = 9;
-        static int gravityForce = 9; // How fast the character falls
-        static bool jumping = false; // Is the character jumping
+        int score = 0;
 
-        static bool movingRight = false;
-        static bool movingLeft = false;
+        int speed = 6; // Character movement speed
+        static int speedJump = 16; // Jump speed
+        int jumpSpeed = speedJump; // Character jumping speed
+        int constantGravityForce = 9;
+        int gravityForce = 9; // How fast the character falls
+
+        int backgroundSpeed = 8;
+
+        bool jumping, movingRight, movingLeft, fall;
+
+
+        List<Image> playerIdle = new List<Image>();
+        List<Image> playerJump = new List<Image>();
+        List<Image> playerRunningRight = new List<Image>();
+        List<Image> playerRunningLeft = new List<Image>();
+        List<Image> playerShooting = new List<Image>();
+
+        static int JUMP_ANIMATION_IMAGE = 2;
+
+
+        private void Game_Load(object sender, EventArgs e)
+        {
+            Player.BringToFront();
+            Player.Refresh();
+            this.DoubleBuffered = true;
+
+
+            //Load Image sets
+            foreach (FileInfo image in new DirectoryInfo("../../Resources/Player/Run").GetFiles())
+            {               
+                playerRunningRight.Add(Image.FromFile(image.FullName));
+            }
+            foreach (FileInfo image in new DirectoryInfo("../../Resources/Player/Jump").GetFiles())
+            {
+                playerJump.Add(Image.FromFile(image.FullName));
+            }
+            foreach (FileInfo image in new DirectoryInfo("../../Resources/Player/Idle").GetFiles())
+            {
+                playerIdle.Add(Image.FromFile(image.FullName));
+            }
+            foreach (FileInfo image in new DirectoryInfo("../../Resources/Player/Shoot").GetFiles())
+            {
+                playerShooting.Add(Image.FromFile(image.FullName));
+            }
+
+
+            //Load flipped Image sets
+            foreach (FileInfo image in new DirectoryInfo("../../Resources/Player/Run").GetFiles())
+            {
+                playerRunningLeft.Add(Image.FromFile(image.FullName));
+            }
+
+            //Flip each image set
+            foreach (Image image in playerRunningLeft)
+            {
+                image.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            }
+        }
+
+
+
 
 
         public class DoubleBufferedPanel : Panel
@@ -65,18 +120,18 @@ namespace GameV1
             if (e.KeyCode == Keys.A) // Move left
             {
                 movingLeft = true;
+                MoveGameElements("forward");
             }
             if (e.KeyCode == Keys.S) // Fast fall
             {
+                fall = true;
             }
             if (e.KeyCode == Keys.D) // Move right
             {
-                movingRight = true;
+                movingRight = true;               
+                MoveGameElements("back");
             }
         }
-
-
-
 
         private void Game_KeyUp(object sender, KeyEventArgs e)
         {
@@ -93,6 +148,7 @@ namespace GameV1
             }
             if (e.KeyCode == Keys.S) // Fast fall
             {
+                fall = false;
             }
             if (e.KeyCode == Keys.D) // Move right
             {
@@ -100,8 +156,30 @@ namespace GameV1
             }
         }
 
+        private void MoveGameElements(string direction)
+        {
+            //foreach (Control element in this.Controls)
+            //{
+            //    if (element is PictureBox && (string)element.Tag == "platform" || element is PictureBox && (string)element.Tag == "coin" || element is PictureBox && (string)element.Tag == "key" || element is PictureBox && (string)element.Tag == "door")
+            //    {
+            //        if (direction == "back")
+            //        {
+            //            element.Left -= backgroundSpeed;
+            //        }
+            //        else if (direction == "forward")
+            //        {
+            //            element.Left += backgroundSpeed;
+            //        }
+            //    }
+            //}
+        }
+
+
         private void tmrGame_Tick(object sender, EventArgs e)
         {
+            txtScore.Text = $"Score: {score}";
+
+
             if (Player.Location.Y > height + 500)
             {
                 Menu form = new Menu();
@@ -128,15 +206,28 @@ namespace GameV1
             {
                 jumpSpeed = speedJump;
             }
-
-            if (movingRight == true)
+            
+            if (movingRight == true && Player.Left + (Player.Width + 120) < this.ClientSize.Width)
             {
                 Player.Left += speed;
+                foreach (Control element in this.Controls)
+                {
+                    if (element is PictureBox && (string)element.Tag == "platform" || element is PictureBox && (string)element.Tag == "coin" || element is PictureBox && (string)element.Tag == "key" || element is PictureBox && (string)element.Tag == "door")
+                    {
+                            element.Left -= backgroundSpeed;
+                    }
+                }
             }
-
-            if (movingLeft == true)
+            if (movingLeft == true && Player.Left > 120) 
             {
                 Player.Left -= speed;
+                foreach (Control element in this.Controls)
+                {
+                    if (element is PictureBox && (string)element.Tag == "platform" || element is PictureBox && (string)element.Tag == "coin" || element is PictureBox && (string)element.Tag == "key" || element is PictureBox && (string)element.Tag == "door")
+                    {
+                        element.Left += backgroundSpeed;
+                    }
+                }
             }
 
             //            
@@ -146,27 +237,61 @@ namespace GameV1
 
             foreach (Control ground in Controls)
             {
-                if (ground is PictureBox && ground.Tag == "platform")
+                if (ground is PictureBox && ground.Tag == "platform" && fall == false)
                 {
                     if (Player.Bounds.IntersectsWith(ground.Bounds) && !jumping)
                     {
                         gravityForce = constantGravityForce;
-                        Player.Top = ground.Top - Player.Height;
+                        Player.Top = ground.Top - Player.Height + 1;
                     }
                 }
             }
         }
 
-        private void Game_Load(object sender, EventArgs e)
-        {
-            Player.BringToFront();
-            Player.Refresh();
-            this.DoubleBuffered = true;
-        }
 
-        private void pnlBG_Paint(object sender, PaintEventArgs e)
-        {
+        static int i = 0;
 
+
+
+        private void tmrAnimations_Tick(object sender, EventArgs e)
+        {
+            if (movingRight == true)
+            {
+                if (i < 7)
+                {
+                    i++;
+                }
+                else
+                {
+                    i = 0;
+                }
+                Player.BackgroundImage = playerRunningRight[i];
+
+            } else if (movingLeft == true)
+            {
+                if (i < 7)
+                {
+                    i++;
+                }
+                else
+                {
+                    i = 0;
+                }
+                Player.BackgroundImage = playerRunningLeft[i];
+            } else if (jumping == true)
+            {
+                //Player.BackgroundImage = playerJump[JUMP_ANIMATION_IMAGE];
+                if (JUMP_ANIMATION_IMAGE == playerJump.Count)
+                {
+                    JUMP_ANIMATION_IMAGE = 0;
+                } else
+                {
+                    JUMP_ANIMATION_IMAGE++;
+                }
+            }     else
+            {
+                Player.BackgroundImage = playerIdle[1];
+            }      
         }
     }
 }

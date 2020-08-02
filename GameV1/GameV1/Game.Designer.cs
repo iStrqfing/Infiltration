@@ -34,6 +34,7 @@
             this.tmrJump = new System.Windows.Forms.Timer(this.components);
             this.tmrGame = new System.Windows.Forms.Timer(this.components);
             this.tmrPlayerMovement = new System.Windows.Forms.Timer(this.components);
+            this.tmrAnimations = new System.Windows.Forms.Timer(this.components);
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -41,6 +42,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Player = new System.Windows.Forms.PictureBox();
             this.pctBackground = new System.Windows.Forms.PictureBox();
+            this.pctDoor = new System.Windows.Forms.PictureBox();
+            this.pctKey = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.txtScore = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -48,6 +55,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBackground)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctDoor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctKey)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // tmrLeftMovement
@@ -75,16 +87,23 @@
             this.tmrPlayerMovement.Interval = 10;
             this.tmrPlayerMovement.Tick += new System.EventHandler(this.tmrPlayerMovement_Tick);
             // 
+            // tmrAnimations
+            // 
+            this.tmrAnimations.Enabled = true;
+            this.tmrAnimations.Interval = 50;
+            this.tmrAnimations.Tick += new System.EventHandler(this.tmrAnimations_Tick);
+            // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.BackgroundImage = global::GameV1.Properties.Resources.Gold;
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(1339, 196);
+            this.pictureBox5.Location = new System.Drawing.Point(1325, 226);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox5.Size = new System.Drawing.Size(36, 35);
             this.pictureBox5.TabIndex = 7;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Tag = "coin";
             // 
             // pictureBox4
             // 
@@ -129,11 +148,11 @@
             // Player
             // 
             this.Player.BackColor = System.Drawing.Color.Transparent;
-            this.Player.BackgroundImage = global::GameV1.Properties.Resources.testCharacter1;
+            this.Player.BackgroundImage = global::GameV1.Properties.Resources.tile0001;
             this.Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Player.Location = new System.Drawing.Point(489, 238);
+            this.Player.Location = new System.Drawing.Point(307, 238);
             this.Player.Name = "Player";
-            this.Player.Size = new System.Drawing.Size(68, 78);
+            this.Player.Size = new System.Drawing.Size(54, 63);
             this.Player.TabIndex = 2;
             this.Player.TabStop = false;
             // 
@@ -149,15 +168,90 @@
             this.pctBackground.TabIndex = 1;
             this.pctBackground.TabStop = false;
             // 
+            // pctDoor
+            // 
+            this.pctDoor.Location = new System.Drawing.Point(136, 12);
+            this.pctDoor.Name = "pctDoor";
+            this.pctDoor.Size = new System.Drawing.Size(46, 74);
+            this.pctDoor.TabIndex = 8;
+            this.pctDoor.TabStop = false;
+            this.pctDoor.Tag = "door";
+            // 
+            // pctKey
+            // 
+            this.pctKey.BackColor = System.Drawing.Color.Transparent;
+            this.pctKey.BackgroundImage = global::GameV1.Properties.Resources.key;
+            this.pctKey.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pctKey.Location = new System.Drawing.Point(1389, 217);
+            this.pctKey.Name = "pctKey";
+            this.pctKey.Size = new System.Drawing.Size(30, 35);
+            this.pctKey.TabIndex = 9;
+            this.pctKey.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.BackgroundImage = global::GameV1.Properties.Resources.Gold;
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox6.Location = new System.Drawing.Point(1283, 226);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(36, 35);
+            this.pictureBox6.TabIndex = 7;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Tag = "coin";
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox7.BackgroundImage = global::GameV1.Properties.Resources.Gold;
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox7.Location = new System.Drawing.Point(866, 78);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(36, 35);
+            this.pictureBox7.TabIndex = 7;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Tag = "coin";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox8.BackgroundImage = global::GameV1.Properties.Resources.Gold;
+            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox8.Location = new System.Drawing.Point(414, 57);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(36, 35);
+            this.pictureBox8.TabIndex = 7;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Tag = "coin";
+            // 
+            // txtScore
+            // 
+            this.txtScore.AutoSize = true;
+            this.txtScore.BackColor = System.Drawing.Color.Transparent;
+            this.txtScore.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtScore.Location = new System.Drawing.Point(12, 23);
+            this.txtScore.Name = "txtScore";
+            this.txtScore.Size = new System.Drawing.Size(107, 25);
+            this.txtScore.TabIndex = 10;
+            this.txtScore.Text = "Score: 0";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 461);
-            this.Controls.Add(this.pictureBox5);
+            this.BackgroundImage = global::GameV1.Properties.Resources.sky;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(924, 461);
+            this.Controls.Add(this.txtScore);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pctKey);
+            this.Controls.Add(this.pctDoor);
+            this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.pictureBox7);
+            this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Player);
             this.Controls.Add(this.pctBackground);
@@ -176,6 +270,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBackground)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctDoor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctKey)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,5 +293,12 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Timer tmrAnimations;
+        private System.Windows.Forms.PictureBox pctDoor;
+        private System.Windows.Forms.PictureBox pctKey;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Label txtScore;
     }
 }
