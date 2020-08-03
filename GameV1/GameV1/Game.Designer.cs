@@ -182,11 +182,12 @@
             this.pctKey.BackColor = System.Drawing.Color.Transparent;
             this.pctKey.BackgroundImage = global::GameV1.Properties.Resources.key;
             this.pctKey.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pctKey.Location = new System.Drawing.Point(1389, 217);
+            this.pctKey.Location = new System.Drawing.Point(1387, 218);
             this.pctKey.Name = "pctKey";
             this.pctKey.Size = new System.Drawing.Size(30, 35);
             this.pctKey.TabIndex = 9;
             this.pctKey.TabStop = false;
+            this.pctKey.Tag = "key";
             // 
             // pictureBox6
             // 
