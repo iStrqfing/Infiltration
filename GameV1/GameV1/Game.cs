@@ -146,15 +146,33 @@ namespace GameV1
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Space && !jumping && playerAbleToJump == true) // Jump if character is not jumping
+            if (e.KeyCode == Keys.Space && !jumping)
             {
-                jumping = true;                             
+                foreach (Control gameObject in this.Controls)
+                {
+                    if (gameObject is PictureBox && gameObject.Tag == "platform" && fall == false)
+                    {
+
+                        if (Player.Bounds.IntersectsWith(gameObject.Bounds) && !jumping)
+                        {
+                            Console.WriteLine("does intersect");
+                            jumping = true;
+                        }
+                    }
+                    else
+                    {
+                        if (!Player.Bounds.IntersectsWith(gameObject.Bounds))
+                        {
+                            Console.WriteLine("doesnt intersect");
+                        }
+
+                    }
+                }
             }
             if (e.KeyCode == Keys.A) // Move left
             {
                 rotated = true;
                 movingLeft = true;
-                MoveGameElements("forward");
             }
             if (e.KeyCode == Keys.S) // Fast fall
             {
@@ -164,7 +182,6 @@ namespace GameV1
             {
                 movingRight = true;
                 rotated = false;
-                MoveGameElements("back");
             }
             if (e.KeyCode == Keys.F)
             {
@@ -199,29 +216,10 @@ namespace GameV1
             }
         }
 
-        private void MoveGameElements(string direction)
-        {
-            //foreach (Control element in this.Controls)
-            //{
-            //    if (element is PictureBox && (string)element.Tag == "platform" || element is PictureBox && (string)element.Tag == "coin" || element is PictureBox && (string)element.Tag == "key" || element is PictureBox && (string)element.Tag == "door")
-            //    {
-            //        if (direction == "back")
-            //        {
-            //            element.Left -= backgroundSpeed;
-            //        }
-            //        else if (direction == "forward")
-            //        {
-            //            element.Left += backgroundSpeed;
-            //        }
-            //    }
-            //}
-        }
-
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
             txtScore.Text = $"Score: {score}";
-
 
             if (Player.Location.Y > height + 500)
             {
@@ -234,10 +232,11 @@ namespace GameV1
 
         private void tmrPlayerMovement_Tick(object sender, EventArgs e)
         {
+            Console.WriteLine(playerAbleToJump);
             Player.Top += jumpSpeed;
             if (jumping && gravityForce < 0) // Checks whether player is jumping
             {
-                jumping = false;
+               jumping = false;
             }
 
             if (jumping == true)
@@ -279,21 +278,18 @@ namespace GameV1
            // pnlMiddleGround.Location.X
 
             foreach (Control gameObject in this.Controls)
-            {
+            {               
                 if (gameObject is PictureBox && gameObject.Tag == "platform" && fall == false)
                 {
-                    
+
                     if (Player.Bounds.IntersectsWith(gameObject.Bounds) && !jumping)
                     {
                         playerAbleToJump = true;
                         gravityForce = constantGravityForce;
                         Player.Top = gameObject.Top - Player.Height + 1;
                     }
-                } else
-                {
-                    playerAbleToJump = false;
                 }
-                
+
                 if (gameObject is PictureBox && gameObject.Tag == "coin")
                 {
                     if (Player.Bounds.IntersectsWith(gameObject.Bounds))
@@ -321,11 +317,6 @@ namespace GameV1
                 }
             }
         }
-
-
-        
-
-
 
         private void tmrAnimations_Tick(object sender, EventArgs e)
         {
