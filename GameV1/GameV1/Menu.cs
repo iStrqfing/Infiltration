@@ -23,9 +23,7 @@ namespace GameV1
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            Game form = new Game();
-            form.Show();
-            this.Hide();
+            
         }
 
         private void Menu_Load(object sender, EventArgs e)
@@ -36,29 +34,51 @@ namespace GameV1
         
         private void AlignBtns()
         {
-            btnPlay.Left = (width / 2) - btnPlay.Width;
-            btnOptions.Left = (width / 2) - btnPlay.Width;
-            btnCredits.Left = (width / 2) - btnPlay.Width;
-            btnQuit.Left = (width / 2) - btnPlay.Width;
+            //btnPlay.Left = (width / 2) - btnPlay.Width;
+            //btnOptions.Left = (width / 2) - btnPlay.Width;
+            //btnCredits.Left = (width / 2) - btnPlay.Width;
+            //btnQuit.Left = (width / 2) - btnPlay.Width;
 
-            btnPlay.Top = (height / 2) + btnPlay.Height - 300;
-            btnOptions.Top = (height / 2) + btnPlay.Height - 225;
-            btnCredits.Top = (height / 2) + btnPlay.Height - 150;
-            btnQuit.Top = (height / 2) + btnPlay.Height - 75;
+            //btnPlay.Top = (height / 2) + btnPlay.Height - 300;
+            //btnOptions.Top = (height / 2) + btnPlay.Height - 225;
+            //btnCredits.Top = (height / 2) + btnPlay.Height - 150;
+            //btnQuit.Top = (height / 2) + btnPlay.Height - 75;
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnCredits_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tmrMenuAnimations_Tick(object sender, EventArgs e)
+        {
+            Console.WriteLine(panel1.Left);
+            panel1.Left--;
+            if (panel1.Left < -1500)
+            {
+                panel1.Left = 0;
+            }
+        }
+
+        private void btnPlay_Click_1(object sender, EventArgs e)
+        {
+            Game form = new Game();
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnQuit_Click_1(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Are you sure you want to quit the game?", "Quit Game", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 System.Environment.Exit(0);
             }
-        }
-
-        private void btnCredits_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

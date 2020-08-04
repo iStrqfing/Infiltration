@@ -28,106 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlMenuBG = new System.Windows.Forms.Panel();
-            this.pnlMenu = new System.Windows.Forms.Panel();
-            this.pnlBGAsset = new System.Windows.Forms.Panel();
             this.btnPlay = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
             this.btnOptions = new System.Windows.Forms.Button();
             this.btnCredits = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tmrMenuAnimations = new System.Windows.Forms.Timer(this.components);
             this.pnlMenuBG.SuspendLayout();
-            this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenuBG
             // 
             this.pnlMenuBG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnlMenuBG.Controls.Add(this.pnlMenu);
+            this.pnlMenuBG.BackgroundImage = global::GameV1.Properties.Resources.sky;
+            this.pnlMenuBG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlMenuBG.Controls.Add(this.btnPlay);
+            this.pnlMenuBG.Controls.Add(this.btnQuit);
+            this.pnlMenuBG.Controls.Add(this.btnOptions);
+            this.pnlMenuBG.Controls.Add(this.btnCredits);
+            this.pnlMenuBG.Controls.Add(this.panel1);
             this.pnlMenuBG.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMenuBG.Location = new System.Drawing.Point(0, 0);
             this.pnlMenuBG.Name = "pnlMenuBG";
-            this.pnlMenuBG.Size = new System.Drawing.Size(800, 450);
+            this.pnlMenuBG.Size = new System.Drawing.Size(924, 450);
             this.pnlMenuBG.TabIndex = 0;
-            // 
-            // pnlMenu
-            // 
-            this.pnlMenu.BackgroundImage = global::GameV1.Properties.Resources.bgSky1;
-            this.pnlMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlMenu.Controls.Add(this.pnlBGAsset);
-            this.pnlMenu.Controls.Add(this.btnPlay);
-            this.pnlMenu.Controls.Add(this.btnQuit);
-            this.pnlMenu.Controls.Add(this.btnOptions);
-            this.pnlMenu.Controls.Add(this.btnCredits);
-            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMenu.Location = new System.Drawing.Point(0, 0);
-            this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(800, 450);
-            this.pnlMenu.TabIndex = 4;
-            // 
-            // pnlBGAsset
-            // 
-            this.pnlBGAsset.BackColor = System.Drawing.Color.Transparent;
-            this.pnlBGAsset.BackgroundImage = global::GameV1.Properties.Resources.far_grounds;
-            this.pnlBGAsset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlBGAsset.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBGAsset.Location = new System.Drawing.Point(0, 230);
-            this.pnlBGAsset.Name = "pnlBGAsset";
-            this.pnlBGAsset.Size = new System.Drawing.Size(800, 220);
-            this.pnlBGAsset.TabIndex = 4;
             // 
             // btnPlay
             // 
-            this.btnPlay.Location = new System.Drawing.Point(429, 27);
+            this.btnPlay.Location = new System.Drawing.Point(428, 101);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(124, 49);
-            this.btnPlay.TabIndex = 0;
+            this.btnPlay.TabIndex = 9;
             this.btnPlay.Text = "Play";
             this.btnPlay.UseVisualStyleBackColor = true;
-            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click_1);
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(427, 199);
+            this.btnQuit.Location = new System.Drawing.Point(426, 273);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(124, 49);
-            this.btnQuit.TabIndex = 3;
+            this.btnQuit.TabIndex = 12;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
-            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click_1);
             // 
             // btnOptions
             // 
-            this.btnOptions.Location = new System.Drawing.Point(427, 85);
+            this.btnOptions.Location = new System.Drawing.Point(426, 159);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(124, 49);
-            this.btnOptions.TabIndex = 1;
+            this.btnOptions.TabIndex = 10;
             this.btnOptions.Text = "Options";
             this.btnOptions.UseVisualStyleBackColor = true;
             // 
             // btnCredits
             // 
-            this.btnCredits.Location = new System.Drawing.Point(427, 144);
+            this.btnCredits.Location = new System.Drawing.Point(426, 218);
             this.btnCredits.Name = "btnCredits";
             this.btnCredits.Size = new System.Drawing.Size(124, 49);
-            this.btnCredits.TabIndex = 2;
+            this.btnCredits.TabIndex = 11;
             this.btnCredits.Text = "Credits";
             this.btnCredits.UseVisualStyleBackColor = true;
-            this.btnCredits.Click += new System.EventHandler(this.btnCredits_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::GameV1.Properties.Resources.magic_cliffs_PREVIEWx1;
+            this.panel1.Location = new System.Drawing.Point(0, 146);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(2400, 304);
+            this.panel1.TabIndex = 13;
+            // 
+            // tmrMenuAnimations
+            // 
+            this.tmrMenuAnimations.Enabled = true;
+            this.tmrMenuAnimations.Interval = 5;
+            this.tmrMenuAnimations.Tick += new System.EventHandler(this.tmrMenuAnimations_Tick);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(924, 450);
             this.Controls.Add(this.pnlMenuBG);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Menu_Load);
             this.pnlMenuBG.ResumeLayout(false);
-            this.pnlMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -137,9 +128,9 @@
         private System.Windows.Forms.Panel pnlMenuBG;
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Button btnQuit;
-        private System.Windows.Forms.Button btnCredits;
         private System.Windows.Forms.Button btnOptions;
-        private System.Windows.Forms.Panel pnlMenu;
-        private System.Windows.Forms.Panel pnlBGAsset;
+        private System.Windows.Forms.Button btnCredits;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Timer tmrMenuAnimations;
     }
 }

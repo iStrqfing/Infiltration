@@ -37,10 +37,10 @@ namespace GameV1
         int score = 0;
 
         int speed = 3; // Character movement speed
-        static int speedJump = 16; // Jump speed
+        static int speedJump = 12; // Jump speed
         int jumpSpeed = speedJump; // Character jumping speed
-        int constantGravityForce = 9;
-        int gravityForce = 9; // How fast the character falls
+        int constantGravityForce = 12;
+        int gravityForce = 12; // How fast the character falls
 
         int backgroundSpeed = 4;
 

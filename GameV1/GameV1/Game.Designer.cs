@@ -150,7 +150,7 @@
             this.Player.BackColor = System.Drawing.Color.Transparent;
             this.Player.BackgroundImage = global::GameV1.Properties.Resources.tile0001;
             this.Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Player.Location = new System.Drawing.Point(307, 238);
+            this.Player.Location = new System.Drawing.Point(179, 252);
             this.Player.Name = "Player";
             this.Player.Size = new System.Drawing.Size(54, 63);
             this.Player.TabIndex = 2;
