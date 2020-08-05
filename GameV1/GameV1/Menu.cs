@@ -26,9 +26,16 @@ namespace GameV1
             
         }
 
+        
+        public double Volume { get { return Volume; } set { Volume = 0.1; } }
+
         private void Menu_Load(object sender, EventArgs e)
         {
-            
+            //SoundPlayer mainMusic = new SoundPlayer(@"../../Resources/Music/Battle in the winter.wav");
+            //mainMusic.Play();
+
+
+
             AlignBtns();
         }
         
@@ -64,7 +71,7 @@ namespace GameV1
                 tmrRight.Enabled = false;
             }
             
-            if (panel1.Left <= -1500)
+            if (panel1.Left <= -1470)
             {
                 tmrRight.Enabled = true;
                 tmrLeft.Enabled = false;

@@ -48,6 +48,13 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.txtScore = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pctBoxElevator = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -60,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctBoxElevator)).BeginInit();
             this.SuspendLayout();
             // 
             // tmrLeftMovement
@@ -150,7 +158,7 @@
             this.Player.BackColor = System.Drawing.Color.Transparent;
             this.Player.BackgroundImage = global::GameV1.Properties.Resources.tile0001;
             this.Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Player.Location = new System.Drawing.Point(179, 252);
+            this.Player.Location = new System.Drawing.Point(238, 265);
             this.Player.Name = "Player";
             this.Player.Size = new System.Drawing.Size(54, 63);
             this.Player.TabIndex = 2;
@@ -236,6 +244,91 @@
             this.txtScore.TabIndex = 10;
             this.txtScore.Text = "Score: 0";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(174, 234);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(195, 28);
+            this.label1.TabIndex = 11;
+            this.label1.Tag = "gameObject";
+            this.label1.Text = "WASD to move";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(620, 183);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(231, 28);
+            this.label2.TabIndex = 11;
+            this.label2.Tag = "gameObject";
+            this.label2.Text = "Spacebar to Jump";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(188, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(293, 28);
+            this.label3.TabIndex = 11;
+            this.label3.Tag = "gameObject";
+            this.label3.Text = "F to go through doors";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(1087, 142);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(366, 28);
+            this.label4.TabIndex = 11;
+            this.label4.Tag = "gameObject";
+            this.label4.Text = "Collect Keys To Open Doors";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(754, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(230, 28);
+            this.label5.TabIndex = 11;
+            this.label5.Tag = "gameObject";
+            this.label5.Text = "S to Fall Through";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(812, 43);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(131, 28);
+            this.label6.TabIndex = 11;
+            this.label6.Tag = "gameObject";
+            this.label6.Text = "Platforms";
+            // 
+            // pctBoxElevator
+            // 
+            this.pctBoxElevator.BackColor = System.Drawing.Color.Transparent;
+            this.pctBoxElevator.BackgroundImage = global::GameV1.Properties.Resources.islandPlatform;
+            this.pctBoxElevator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pctBoxElevator.Location = new System.Drawing.Point(-49, 352);
+            this.pctBoxElevator.Name = "pctBoxElevator";
+            this.pctBoxElevator.Size = new System.Drawing.Size(168, 108);
+            this.pctBoxElevator.TabIndex = 4;
+            this.pctBoxElevator.TabStop = false;
+            this.pctBoxElevator.Tag = "platform";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -243,9 +336,16 @@
             this.BackgroundImage = global::GameV1.Properties.Resources.sky;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(924, 461);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.txtScore);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pctBoxElevator);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pctKey);
             this.Controls.Add(this.pctDoor);
@@ -276,6 +376,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctBoxElevator)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,5 +402,12 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label txtScore;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pctBoxElevator;
     }
 }

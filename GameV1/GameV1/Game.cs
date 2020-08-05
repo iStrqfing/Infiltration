@@ -38,12 +38,13 @@ namespace GameV1
         int score = 0;
 
         int speed = 3; // Character movement speed
-        static int speedJump = 12; // Jump speed
+        static int speedJump = 8; // Jump speed
         int jumpSpeed = speedJump; // Character jumping speed
         int constantGravityForce = 12;
         int gravityForce = 12; // How fast the character falls
 
         int backgroundSpeed = 4;
+        int backgroundHeight = 1;
 
         bool jumping, movingRight, movingLeft, fall, rotated, playerAbleToJump;
         bool keyFound, openDoor;
@@ -61,18 +62,31 @@ namespace GameV1
         List<Image> playerRunningLeft = new List<Image>();
         List<Image> playerShooting = new List<Image>();
 
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
         List<Image> playerIdleRotated = new List<Image>();
         List<Image> playerJumpRotated = new List<Image>();
 
         private void Game_Load(object sender, EventArgs e)
         {
-            SoundPlayer mainMusic = new SoundPlayer(@"../../Resources/Music/Lurid Delusion.wav");
-            mainMusic.Play();
+            
+            //SoundPlayer mainMusic = new SoundPlayer(@"../../Resources/Music/Lurid Delusion.wav");
+            //mainMusic.Play();
 
             Player.BringToFront();
             Player.Refresh();
             this.DoubleBuffered = true;
 
+            foreach (Control x in this.Controls)
+            {
+                if (x is Label)
+                {
+                    x.BringToFront();
+                }
+            }
             //foreach (Control item in this.Controls)
             //{
             //    if (item is Timer)
@@ -150,6 +164,7 @@ namespace GameV1
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
+            
             if (e.KeyCode == Keys.Space && !jumping)
             {
                 foreach (Control gameObject in this.Controls)
@@ -225,11 +240,14 @@ namespace GameV1
         {
             txtScore.Text = $"Score: {score}";
 
+            
+
             if (Player.Location.Y > height + 500)
             {
                 Menu form = new Menu();
                 form.Show();
                 this.Hide();
+                
                 tmrGame.Stop();
             }
         }
@@ -247,18 +265,39 @@ namespace GameV1
             {
                 jumpSpeed = -speedJump;
                 gravityForce -= 1;
+                
+                
             }
             else
             {
                 jumpSpeed = speedJump;
             }
+
+            /// Island Elevator Platform
+            /// 
+            ///
             
+            if (Player.Bounds.IntersectsWith(pctBoxElevator.Bounds))
+            {
+                if (pctBoxElevator.Top > 140)
+                {
+                    Console.WriteLine(pctBoxElevator.Top);
+                    pctBoxElevator.Top -= backgroundHeight;
+                }               
+            } else if (pctBoxElevator.Top < 350 )
+            {
+                pctBoxElevator.Top += backgroundHeight;
+            }
+
+
+
+
             if (movingRight == true && Player.Left + (Player.Width + 120) < this.ClientSize.Width)
             {
                 Player.Left += speed;
                 foreach (Control element in this.Controls)
                 {
-                    if (element is PictureBox && (string)element.Tag == "platform" || element is PictureBox && (string)element.Tag == "coin" || element is PictureBox && (string)element.Tag == "key" || element is PictureBox && (string)element.Tag == "door")
+                    if (element is PictureBox && (string)element.Tag == "platform" || element is PictureBox && (string)element.Tag == "coin" || element is PictureBox && (string)element.Tag == "key" || element is PictureBox && (string)element.Tag == "door" || element is Label && (string)element.Tag == "gameObject")
                     {
                             element.Left -= backgroundSpeed;
                     }
@@ -269,7 +308,7 @@ namespace GameV1
                 Player.Left -= speed;
                 foreach (Control element in this.Controls)
                 {
-                    if (element is PictureBox && (string)element.Tag == "platform" || element is PictureBox && (string)element.Tag == "coin" || element is PictureBox && (string)element.Tag == "key" || element is PictureBox && (string)element.Tag == "door")
+                    if (element is PictureBox && (string)element.Tag == "platform" || element is PictureBox && (string)element.Tag == "coin" || element is PictureBox && (string)element.Tag == "key" || element is PictureBox && (string)element.Tag == "door" || element is Label && (string)element.Tag == "gameObject")
                     {
                         element.Left += backgroundSpeed;
                     }
@@ -287,7 +326,7 @@ namespace GameV1
                 {
 
                     if (Player.Bounds.IntersectsWith(gameObject.Bounds) && !jumping)
-                    {
+                    {                     
                         playerAbleToJump = true;
                         gravityForce = constantGravityForce;
                         Player.Top = gameObject.Top - Player.Height + 1;
