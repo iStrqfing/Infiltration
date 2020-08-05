@@ -36,13 +36,14 @@
             this.btnCredits = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tmrMenuAnimations = new System.Windows.Forms.Timer(this.components);
+            this.tmrLeft = new System.Windows.Forms.Timer(this.components);
+            this.tmrRight = new System.Windows.Forms.Timer(this.components);
             this.pnlMenuBG.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenuBG
             // 
-            this.pnlMenuBG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnlMenuBG.BackgroundImage = global::GameV1.Properties.Resources.sky;
+            this.pnlMenuBG.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(242)))), ((int)(((byte)(236)))));
             this.pnlMenuBG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlMenuBG.Controls.Add(this.btnPlay);
             this.pnlMenuBG.Controls.Add(this.btnQuit);
@@ -107,6 +108,16 @@
             this.tmrMenuAnimations.Interval = 5;
             this.tmrMenuAnimations.Tick += new System.EventHandler(this.tmrMenuAnimations_Tick);
             // 
+            // tmrLeft
+            // 
+            this.tmrLeft.Interval = 10;
+            this.tmrLeft.Tick += new System.EventHandler(this.tmrLeft_Tick);
+            // 
+            // tmrRight
+            // 
+            this.tmrRight.Interval = 10;
+            this.tmrRight.Tick += new System.EventHandler(this.tmrRight_Tick);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,5 +143,7 @@
         private System.Windows.Forms.Button btnCredits;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer tmrMenuAnimations;
+        private System.Windows.Forms.Timer tmrLeft;
+        private System.Windows.Forms.Timer tmrRight;
     }
 }

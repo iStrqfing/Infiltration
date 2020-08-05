@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace GameV1
 {
@@ -65,6 +66,9 @@ namespace GameV1
 
         private void Game_Load(object sender, EventArgs e)
         {
+            SoundPlayer mainMusic = new SoundPlayer(@"../../Resources/Music/Lurid Delusion.wav");
+            mainMusic.Play();
+
             Player.BringToFront();
             Player.Refresh();
             this.DoubleBuffered = true;

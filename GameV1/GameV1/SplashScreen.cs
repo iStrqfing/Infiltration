@@ -29,8 +29,7 @@ namespace GameV1
             lblPresents.Top = (height / 2) - (pctBoxLogo.Height / 2);
             lblPresents.Left = 0 - lblPresents.Width;
 
-            //SoundPlayer simpleSound = new SoundPlayer(@"K:\12IA\Downloads\Lurid Delusion.wav");
-            //simpleSound.Play();
+            
         }
 
         private void tmrShowLogo_Tick(object sender, EventArgs e)

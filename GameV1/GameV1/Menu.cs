@@ -58,12 +58,21 @@ namespace GameV1
         private void tmrMenuAnimations_Tick(object sender, EventArgs e)
         {
             Console.WriteLine(panel1.Left);
-            panel1.Left--;
-            if (panel1.Left < -1500)
+            if (panel1.Left >= 0)
             {
-                panel1.Left = 0;
+                tmrLeft.Enabled = true;
+                tmrRight.Enabled = false;
+            }
+            
+            if (panel1.Left <= -1500)
+            {
+                tmrRight.Enabled = true;
+                tmrLeft.Enabled = false;
             }
         }
+
+
+
 
         private void btnPlay_Click_1(object sender, EventArgs e)
         {
@@ -79,6 +88,17 @@ namespace GameV1
             {
                 System.Environment.Exit(0);
             }
+        }
+
+        private void tmrLeft_Tick(object sender, EventArgs e)
+        {
+            panel1.Left--;
+        }
+
+        private void tmrRight_Tick(object sender, EventArgs e)
+        {
+
+            panel1.Left++;
         }
     }
 }
