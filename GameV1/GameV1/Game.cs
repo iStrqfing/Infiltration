@@ -47,7 +47,7 @@ namespace GameV1
         int backgroundHeight = 1;
 
         bool jumping, movingRight, movingLeft, fall, rotated, playerAbleToJump;
-        bool keyFound, openDoor;
+        bool keyFound, openDoor, paused;
 
         const int playerIdleAnimationFrames = 4;
         const int playerJumpAnimationFrames = 3;
@@ -62,6 +62,28 @@ namespace GameV1
         List<Image> playerRunningLeft = new List<Image>();
         List<Image> playerShooting = new List<Image>();
 
+        private void btnResume_Click(object sender, EventArgs e)
+        {
+            paused = false;
+            pnlPaused.Visible = false;
+            tmrAnimations.Start();
+            tmrGame.Start();
+            tmrJump.Start();
+            tmrPlayerMovement.Start();
+            tmrLeftMovement.Start();
+            tmrRightMovement.Start();
+            this.Focus();
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            Menu form = new Menu();
+            form.Show();
+            this.Hide();
+
+            tmrGame.Stop();
+        }
+
         private void label4_Click(object sender, EventArgs e)
         {
 
@@ -72,9 +94,11 @@ namespace GameV1
 
         private void Game_Load(object sender, EventArgs e)
         {
-            
+
             //SoundPlayer mainMusic = new SoundPlayer(@"../../Resources/Music/Lurid Delusion.wav");
             //mainMusic.Play();
+
+            pnlPaused.Visible = false;
 
             Player.BringToFront();
             Player.Refresh();
@@ -162,78 +186,7 @@ namespace GameV1
 
 
 
-        private void Game_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-            if (e.KeyCode == Keys.Space && !jumping)
-            {
-                foreach (Control gameObject in this.Controls)
-                {
-                    if (gameObject is PictureBox && gameObject.Tag == "platform" && fall == false)
-                    {
-
-                        if (Player.Bounds.IntersectsWith(gameObject.Bounds) && !jumping)
-                        {
-                            Console.WriteLine("does intersect");
-                            jumping = true;
-                        }
-                    }
-                    else
-                    {
-                        if (!Player.Bounds.IntersectsWith(gameObject.Bounds))
-                        {
-                            Console.WriteLine("doesnt intersect");
-                        }
-
-                    }
-                }
-            }
-            if (e.KeyCode == Keys.A) // Move left
-            {
-                rotated = true;
-                movingLeft = true;
-            }
-            if (e.KeyCode == Keys.S) // Fast fall
-            {
-                fall = true;
-            }
-            if (e.KeyCode == Keys.D) // Move right
-            {
-                movingRight = true;
-                rotated = false;
-            }
-            if (e.KeyCode == Keys.F)
-            {
-                openDoor = true;
-            }
-        }
-
-        private void Game_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Space) // Jump
-            {
-                if (jumping == true)
-                {
-                    jumping = false;
-                }               
-            }
-            if (e.KeyCode == Keys.A) // Move left
-            {
-                movingLeft = false;
-            }
-            if (e.KeyCode == Keys.S) // Fast fall
-            {
-                fall = false;
-            }
-            if (e.KeyCode == Keys.D) // Move right
-            {
-                movingRight = false;
-            }
-            if (e.KeyCode == Keys.F)
-            {
-                openDoor = false;
-            }
-        }
+        
 
 
         private void tmrGame_Tick(object sender, EventArgs e)
@@ -254,7 +207,6 @@ namespace GameV1
 
         private void tmrPlayerMovement_Tick(object sender, EventArgs e)
         {
-            Console.WriteLine(playerAbleToJump);
             Player.Top += jumpSpeed;
             if (jumping && gravityForce < 0) // Checks whether player is jumping
             {
@@ -281,7 +233,6 @@ namespace GameV1
             {
                 if (pctBoxElevator.Top > 140)
                 {
-                    Console.WriteLine(pctBoxElevator.Top);
                     pctBoxElevator.Top -= backgroundHeight;
                 }               
             } else if (pctBoxElevator.Top < 350 )
@@ -318,15 +269,16 @@ namespace GameV1
             //            
 
             // x of platform 
-           // pnlMiddleGround.Location.X
+            // pnlMiddleGround.Location.X
+
+            
 
             foreach (Control gameObject in this.Controls)
             {               
                 if (gameObject is PictureBox && gameObject.Tag == "platform" && fall == false)
                 {
-
-                    if (Player.Bounds.IntersectsWith(gameObject.Bounds) && !jumping)
-                    {                     
+                    if (Player.Bounds.IntersectsWith(gameObject.Bounds) && !jumping )
+                    {
                         playerAbleToJump = true;
                         gravityForce = constantGravityForce;
                         Player.Top = gameObject.Top - Player.Height + 1;
@@ -448,6 +400,107 @@ namespace GameV1
                 }
                     
             }      
+        }
+
+
+        private void Game_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (paused == true)
+                {
+                    paused = false;
+                    pnlPaused.Visible = false;
+                    tmrAnimations.Start();
+                    tmrGame.Start();
+                    tmrJump.Start();
+                    tmrPlayerMovement.Start();
+                    tmrLeftMovement.Start();
+                    tmrRightMovement.Start();
+                } else
+                {
+                    pnlPaused.BringToFront();
+                    pnlPaused.Visible = true;
+                    pnlPaused.BackColor = Color.FromArgb(80, 79, 249, 249);
+                    paused = true;
+                    tmrAnimations.Stop();
+                    tmrGame.Stop();
+                    tmrJump.Stop();
+                    tmrPlayerMovement.Stop();
+                    tmrLeftMovement.Stop();
+                    tmrRightMovement.Stop();
+                }
+
+
+            }
+            if (e.KeyCode == Keys.Space && !jumping)
+            {
+                foreach (Control gameObject in this.Controls)
+                {
+                    if (gameObject is PictureBox && gameObject.Tag == "platform" && fall == false)
+                    {
+
+                        if (Player.Bounds.IntersectsWith(gameObject.Bounds) && !jumping)
+                        {
+                            jumping = true;
+                        }
+                    }
+                    else
+                    {
+                        if (!Player.Bounds.IntersectsWith(gameObject.Bounds))
+                        {
+                        }
+
+                    }
+                }
+            }
+            if (e.KeyCode == Keys.A) // Move left
+            {
+                rotated = true;
+                movingLeft = true;
+            }
+            if (e.KeyCode == Keys.S) // Fast fall
+            {
+                fall = true;
+            }
+            if (e.KeyCode == Keys.D) // Move right
+            {
+                movingRight = true;
+                rotated = false;
+            }
+            if (e.KeyCode == Keys.F)
+            {
+                openDoor = true;
+            }
+        }
+
+        private void Game_KeyUp(object sender, KeyEventArgs e)
+        {
+
+
+            if (e.KeyCode == Keys.Space) // Jump
+            {
+                if (jumping == true)
+                {
+                    jumping = false;
+                }
+            }
+            if (e.KeyCode == Keys.A) // Move left
+            {
+                movingLeft = false;
+            }
+            if (e.KeyCode == Keys.S) // Fast fall
+            {
+                fall = false;
+            }
+            if (e.KeyCode == Keys.D) // Move right
+            {
+                movingRight = false;
+            }
+            if (e.KeyCode == Keys.F)
+            {
+                openDoor = false;
+            }
         }
     }
 }

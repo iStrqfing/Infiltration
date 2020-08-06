@@ -21,10 +21,6 @@ namespace GameV1
             InitializeComponent();
         }
 
-        private void btnPlay_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         
         public double Volume { get { return Volume; } set { Volume = 0.1; } }
@@ -33,8 +29,8 @@ namespace GameV1
         {
             //SoundPlayer mainMusic = new SoundPlayer(@"../../Resources/Music/Battle in the winter.wav");
             //mainMusic.Play();
-
-
+            
+            
 
             AlignBtns();
         }
@@ -52,26 +48,17 @@ namespace GameV1
             //btnQuit.Top = (height / 2) + btnPlay.Height - 75;
         }
 
-        private void btnQuit_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnCredits_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void tmrMenuAnimations_Tick(object sender, EventArgs e)
         {
-            Console.WriteLine(panel1.Left);
-            if (panel1.Left >= 0)
+            
+            if (pctBoxBG.Left >= 0)
             {
                 tmrLeft.Enabled = true;
                 tmrRight.Enabled = false;
             }
             
-            if (panel1.Left <= -1470)
+            if (pctBoxBG.Left <= -1470)
             {
                 tmrRight.Enabled = true;
                 tmrLeft.Enabled = false;
@@ -81,14 +68,26 @@ namespace GameV1
 
 
 
-        private void btnPlay_Click_1(object sender, EventArgs e)
+
+        private void tmrLeft_Tick(object sender, EventArgs e)
+        {
+            pctBoxBG.Left--;
+        }
+
+        private void tmrRight_Tick(object sender, EventArgs e)
+        {
+
+            pctBoxBG.Left++;
+        }
+
+        private void btnPlay_Click_2(object sender, EventArgs e)
         {
             Game form = new Game();
             form.Show();
             this.Hide();
         }
 
-        private void btnQuit_Click_1(object sender, EventArgs e)
+        private void btnQuit_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Are you sure you want to quit the game?", "Quit Game", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
@@ -97,15 +96,5 @@ namespace GameV1
             }
         }
 
-        private void tmrLeft_Tick(object sender, EventArgs e)
-        {
-            panel1.Left--;
-        }
-
-        private void tmrRight_Tick(object sender, EventArgs e)
-        {
-
-            panel1.Left++;
-        }
     }
 }

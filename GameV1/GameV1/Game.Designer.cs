@@ -55,6 +55,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pctBoxElevator = new System.Windows.Forms.PictureBox();
+            this.pnlPaused = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnResume = new System.Windows.Forms.Button();
+            this.btnOptions = new System.Windows.Forms.Button();
+            this.btnQuit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -68,6 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBoxElevator)).BeginInit();
+            this.pnlPaused.SuspendLayout();
             this.SuspendLayout();
             // 
             // tmrLeftMovement
@@ -329,6 +335,60 @@
             this.pctBoxElevator.TabStop = false;
             this.pctBoxElevator.Tag = "platform";
             // 
+            // pnlPaused
+            // 
+            this.pnlPaused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(205)))), ((int)(((byte)(12)))));
+            this.pnlPaused.Controls.Add(this.btnQuit);
+            this.pnlPaused.Controls.Add(this.btnOptions);
+            this.pnlPaused.Controls.Add(this.btnResume);
+            this.pnlPaused.Controls.Add(this.label7);
+            this.pnlPaused.Location = new System.Drawing.Point(393, 98);
+            this.pnlPaused.Name = "pnlPaused";
+            this.pnlPaused.Size = new System.Drawing.Size(173, 230);
+            this.pnlPaused.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(11, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(152, 42);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Paused";
+            // 
+            // btnResume
+            // 
+            this.btnResume.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResume.Location = new System.Drawing.Point(44, 77);
+            this.btnResume.Name = "btnResume";
+            this.btnResume.Size = new System.Drawing.Size(82, 37);
+            this.btnResume.TabIndex = 1;
+            this.btnResume.Text = "Resume";
+            this.btnResume.UseVisualStyleBackColor = true;
+            this.btnResume.Click += new System.EventHandler(this.btnResume_Click);
+            // 
+            // btnOptions
+            // 
+            this.btnOptions.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOptions.Location = new System.Drawing.Point(44, 120);
+            this.btnOptions.Name = "btnOptions";
+            this.btnOptions.Size = new System.Drawing.Size(82, 37);
+            this.btnOptions.TabIndex = 1;
+            this.btnOptions.Text = "Options";
+            this.btnOptions.UseVisualStyleBackColor = true;
+            // 
+            // btnQuit
+            // 
+            this.btnQuit.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuit.Location = new System.Drawing.Point(44, 163);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(82, 37);
+            this.btnQuit.TabIndex = 1;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -336,6 +396,7 @@
             this.BackgroundImage = global::GameV1.Properties.Resources.sky;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(924, 461);
+            this.Controls.Add(this.pnlPaused);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
@@ -377,6 +438,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBoxElevator)).EndInit();
+            this.pnlPaused.ResumeLayout(false);
+            this.pnlPaused.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -409,5 +472,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pctBoxElevator;
+        private System.Windows.Forms.Panel pnlPaused;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.Button btnOptions;
+        private System.Windows.Forms.Button btnResume;
     }
 }
