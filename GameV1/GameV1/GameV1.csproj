@@ -182,5 +182,14 @@
   <ItemGroup>
     <None Include="Resources\islandPlatform.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Game Objects\Solid Ground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Game Objects\Solid Ground Reversed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Game Objects\traps\mine\mine_1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

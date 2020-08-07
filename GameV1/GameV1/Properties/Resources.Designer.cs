@@ -213,6 +213,16 @@ namespace GameV1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mine_1 {
+            get {
+                object obj = ResourceManager.GetObject("mine_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sea {
             get {
                 object obj = ResourceManager.GetObject("sea", resourceCulture);
@@ -226,6 +236,26 @@ namespace GameV1.Properties {
         internal static System.Drawing.Bitmap sky {
             get {
                 object obj = ResourceManager.GetObject("sky", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Solid_Ground {
+            get {
+                object obj = ResourceManager.GetObject("Solid Ground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Solid_Ground_Reversed {
+            get {
+                object obj = ResourceManager.GetObject("Solid Ground Reversed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

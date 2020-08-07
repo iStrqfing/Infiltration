@@ -16,6 +16,8 @@ namespace GameV1
         static int height = SystemInformation.VirtualScreen.Height;
         static int width = SystemInformation.VirtualScreen.Width;
 
+        SoundPlayer mainMusic = new SoundPlayer(@"../../Resources/Music/Battle in the winter.wav");
+
         public Menu()
         {
             InitializeComponent();
@@ -27,9 +29,9 @@ namespace GameV1
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            //SoundPlayer mainMusic = new SoundPlayer(@"../../Resources/Music/Battle in the winter.wav");
-            //mainMusic.Play();
             
+            mainMusic.Play();
+
             
 
             AlignBtns();
@@ -82,6 +84,7 @@ namespace GameV1
 
         private void btnPlay_Click_2(object sender, EventArgs e)
         {
+            mainMusic.Stop();
             Game form = new Game();
             form.Show();
             this.Hide();

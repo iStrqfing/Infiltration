@@ -34,7 +34,7 @@
             this.tmrJump = new System.Windows.Forms.Timer(this.components);
             this.tmrGame = new System.Windows.Forms.Timer(this.components);
             this.tmrPlayerMovement = new System.Windows.Forms.Timer(this.components);
-            this.tmrAnimations = new System.Windows.Forms.Timer(this.components);
+            this.tmrPlayerAnimations = new System.Windows.Forms.Timer(this.components);
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -56,10 +56,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pctBoxElevator = new System.Windows.Forms.PictureBox();
             this.pnlPaused = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnResume = new System.Windows.Forms.Button();
-            this.btnOptions = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
+            this.btnOptions = new System.Windows.Forms.Button();
+            this.btnResume = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pctBoxMine = new System.Windows.Forms.PictureBox();
+            this.tmrAnimations = new System.Windows.Forms.Timer(this.components);
+            this.tmrMine = new System.Windows.Forms.Timer(this.components);
+            this.tmrExplosion = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -74,6 +81,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBoxElevator)).BeginInit();
             this.pnlPaused.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctBoxMine)).BeginInit();
             this.SuspendLayout();
             // 
             // tmrLeftMovement
@@ -101,11 +112,11 @@
             this.tmrPlayerMovement.Interval = 10;
             this.tmrPlayerMovement.Tick += new System.EventHandler(this.tmrPlayerMovement_Tick);
             // 
-            // tmrAnimations
+            // tmrPlayerAnimations
             // 
-            this.tmrAnimations.Enabled = true;
-            this.tmrAnimations.Interval = 50;
-            this.tmrAnimations.Tick += new System.EventHandler(this.tmrAnimations_Tick);
+            this.tmrPlayerAnimations.Enabled = true;
+            this.tmrPlayerAnimations.Interval = 50;
+            this.tmrPlayerAnimations.Tick += new System.EventHandler(this.tmrPlayerAnimations_Tick_1);
             // 
             // pictureBox5
             // 
@@ -152,12 +163,12 @@
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::GameV1.Properties.Resources.groundMiddleGrassyPlatform;
-            this.pictureBox1.Location = new System.Drawing.Point(179, 355);
+            this.pictureBox1.Location = new System.Drawing.Point(179, 361);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(605, 35);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "platform";
+            this.pictureBox1.Tag = "solidPlatform";
             // 
             // Player
             // 
@@ -184,12 +195,14 @@
             // 
             // pctDoor
             // 
+            this.pctDoor.BackColor = System.Drawing.Color.Transparent;
+            this.pctDoor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pctDoor.Location = new System.Drawing.Point(136, 12);
             this.pctDoor.Name = "pctDoor";
             this.pctDoor.Size = new System.Drawing.Size(46, 74);
             this.pctDoor.TabIndex = 8;
             this.pctDoor.TabStop = false;
-            this.pctDoor.Tag = "door";
+            this.pctDoor.Tag = "portal";
             // 
             // pctKey
             // 
@@ -333,7 +346,7 @@
             this.pctBoxElevator.Size = new System.Drawing.Size(168, 108);
             this.pctBoxElevator.TabIndex = 4;
             this.pctBoxElevator.TabStop = false;
-            this.pctBoxElevator.Tag = "platform";
+            this.pctBoxElevator.Tag = "elevator";
             // 
             // pnlPaused
             // 
@@ -347,15 +360,26 @@
             this.pnlPaused.Size = new System.Drawing.Size(173, 230);
             this.pnlPaused.TabIndex = 12;
             // 
-            // label7
+            // btnQuit
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(11, 17);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(152, 42);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Paused";
+            this.btnQuit.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuit.Location = new System.Drawing.Point(44, 163);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(82, 37);
+            this.btnQuit.TabIndex = 1;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
+            // btnOptions
+            // 
+            this.btnOptions.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOptions.Location = new System.Drawing.Point(44, 120);
+            this.btnOptions.Name = "btnOptions";
+            this.btnOptions.Size = new System.Drawing.Size(82, 37);
+            this.btnOptions.TabIndex = 1;
+            this.btnOptions.Text = "Options";
+            this.btnOptions.UseVisualStyleBackColor = true;
             // 
             // btnResume
             // 
@@ -368,26 +392,79 @@
             this.btnResume.UseVisualStyleBackColor = true;
             this.btnResume.Click += new System.EventHandler(this.btnResume_Click);
             // 
-            // btnOptions
+            // label7
             // 
-            this.btnOptions.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOptions.Location = new System.Drawing.Point(44, 120);
-            this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(82, 37);
-            this.btnOptions.TabIndex = 1;
-            this.btnOptions.Text = "Options";
-            this.btnOptions.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(11, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(152, 42);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Paused";
             // 
-            // btnQuit
+            // pictureBox9
             // 
-            this.btnQuit.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuit.Location = new System.Drawing.Point(44, 163);
-            this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(82, 37);
-            this.btnQuit.TabIndex = 1;
-            this.btnQuit.Text = "Quit";
-            this.btnQuit.UseVisualStyleBackColor = true;
-            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox9.BackgroundImage = global::GameV1.Properties.Resources.Solid_Ground;
+            this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox9.Location = new System.Drawing.Point(179, 352);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(93, 114);
+            this.pictureBox9.TabIndex = 13;
+            this.pictureBox9.TabStop = false;
+            this.pictureBox9.Tag = "gameObject";
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(32)))), ((int)(((byte)(36)))));
+            this.pictureBox10.Location = new System.Drawing.Point(269, 388);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(502, 78);
+            this.pictureBox10.TabIndex = 14;
+            this.pictureBox10.TabStop = false;
+            this.pictureBox10.Tag = "gameObject";
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox11.BackgroundImage = global::GameV1.Properties.Resources.Solid_Ground_Reversed;
+            this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox11.Location = new System.Drawing.Point(691, 352);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(93, 114);
+            this.pictureBox11.TabIndex = 13;
+            this.pictureBox11.TabStop = false;
+            this.pictureBox11.Tag = "gameObject";
+            // 
+            // pctBoxMine
+            // 
+            this.pctBoxMine.BackColor = System.Drawing.Color.Transparent;
+            this.pctBoxMine.BackgroundImage = global::GameV1.Properties.Resources.mine_1;
+            this.pctBoxMine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pctBoxMine.Location = new System.Drawing.Point(614, 321);
+            this.pctBoxMine.Name = "pctBoxMine";
+            this.pctBoxMine.Size = new System.Drawing.Size(60, 44);
+            this.pctBoxMine.TabIndex = 15;
+            this.pctBoxMine.TabStop = false;
+            this.pctBoxMine.Tag = "mine";
+            // 
+            // tmrAnimations
+            // 
+            this.tmrAnimations.Enabled = true;
+            this.tmrAnimations.Interval = 40;
+            this.tmrAnimations.Tick += new System.EventHandler(this.tmrAnimations_Tick);
+            // 
+            // tmrMine
+            // 
+            this.tmrMine.Enabled = true;
+            this.tmrMine.Interval = 10;
+            this.tmrMine.Tick += new System.EventHandler(this.tmrMine_Tick_1);
+            // 
+            // tmrExplosion
+            // 
+            this.tmrExplosion.Enabled = true;
+            this.tmrExplosion.Interval = 120;
+            this.tmrExplosion.Tick += new System.EventHandler(this.tmrExplosion_Tick);
             // 
             // Game
             // 
@@ -396,6 +473,11 @@
             this.BackgroundImage = global::GameV1.Properties.Resources.sky;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(924, 461);
+            this.Controls.Add(this.pctBoxMine);
+            this.Controls.Add(this.pictureBox11);
+            this.Controls.Add(this.pictureBox10);
+            this.Controls.Add(this.pictureBox9);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlPaused);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -414,7 +496,6 @@
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Player);
             this.Controls.Add(this.pctBackground);
             this.DoubleBuffered = true;
@@ -440,6 +521,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pctBoxElevator)).EndInit();
             this.pnlPaused.ResumeLayout(false);
             this.pnlPaused.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctBoxMine)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,7 +543,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Timer tmrAnimations;
+        private System.Windows.Forms.Timer tmrPlayerAnimations;
         private System.Windows.Forms.PictureBox pctDoor;
         private System.Windows.Forms.PictureBox pctKey;
         private System.Windows.Forms.PictureBox pictureBox6;
@@ -477,5 +562,12 @@
         private System.Windows.Forms.Button btnQuit;
         private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.Button btnResume;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pctBoxMine;
+        private System.Windows.Forms.Timer tmrAnimations;
+        private System.Windows.Forms.Timer tmrMine;
+        private System.Windows.Forms.Timer tmrExplosion;
     }
 }
