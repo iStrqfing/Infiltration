@@ -268,7 +268,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Lucida Sans Unicode", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(174, 234);
+            this.label1.Location = new System.Drawing.Point(174, 205);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(195, 28);
             this.label1.TabIndex = 11;
@@ -310,7 +310,6 @@
             this.label4.TabIndex = 11;
             this.label4.Tag = "gameObject";
             this.label4.Text = "Collect Keys To Open Doors";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 

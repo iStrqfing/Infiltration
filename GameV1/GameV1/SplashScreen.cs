@@ -13,8 +13,9 @@ namespace GameV1
 {
     public partial class SplashScreen : Form
     {
-        static int height = SystemInformation.VirtualScreen.Height;
-        static int width = SystemInformation.VirtualScreen.Width;
+        static int height;
+        static int width;
+
 
         public SplashScreen()
         {
@@ -23,13 +24,14 @@ namespace GameV1
 
         private void SplashScreen_Load(object sender, EventArgs e)
         {
-            pctBoxLogo.Top = (height / 2) - (pctBoxLogo.Height / 2) - (200);
+            height = this.Height;
+            width = this.Width;
+
+            pctBoxLogo.Top = (height / 2) - (pctBoxLogo.Height / 2) - (100);
             pctBoxLogo.Left = 0 - pctBoxLogo.Width;
 
-            lblPresents.Top = (height / 2) - (pctBoxLogo.Height / 2);
-            lblPresents.Left = 0 - lblPresents.Width;
-
-            
+            lblPresents.Top = (height / 2) - (pctBoxLogo.Height / 2) + 50;
+            lblPresents.Left = 0 - lblPresents.Width;    
         }
 
         private void tmrShowLogo_Tick(object sender, EventArgs e)
@@ -61,7 +63,7 @@ namespace GameV1
                 tmrShowText.Stop();
                 System.Threading.Thread.Sleep(3000);
 
-                GameSplashScreen form = new GameSplashScreen();
+                StoryLine form = new StoryLine();
                 form.Show();
                 this.Hide();
             }

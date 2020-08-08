@@ -53,7 +53,7 @@ namespace GameV1
 
         const int playerIdleAnimationFrames = 4;
         const int playerJumpAnimationFrames = 3;
-        const int playerRunningAnimationFrames = 8;
+        const int playerRunningAnimationFrames = 7;
         const int playerShootingAnimationFrames = 5;
 
         const int mineIdleAnimationFrames = 1;
@@ -91,14 +91,9 @@ namespace GameV1
 
         private void btnResume_Click(object sender, EventArgs e)
         {
-            paused = false;
             pnlPaused.Visible = false;
-            tmrPlayerAnimations.Start();
-            tmrGame.Start();
-            tmrJump.Start();
-            tmrPlayerMovement.Start();
-            tmrLeftMovement.Start();
-            tmrRightMovement.Start();
+            paused = false;
+            startStopTimers(true);
             this.Focus();
         }
 
@@ -108,14 +103,10 @@ namespace GameV1
             form.Show();
             this.Hide();
             mainMusic.Stop();
-
             tmrGame.Stop();
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
 
-        }
 
         List<Image> playerIdleRotated = new List<Image>();
         List<Image> playerJumpRotated = new List<Image>();
@@ -314,7 +305,7 @@ namespace GameV1
         {
             if (movingRight == true)
             {
-                if (playerRunningAnimation == playerJumpAnimationFrames)
+                if (playerRunningAnimation == playerRunningAnimationFrames)
                 {
                     Player.BackgroundImage = playerRunningRight[playerRunningAnimation];
                     playerRunningAnimation = 0;
@@ -328,7 +319,7 @@ namespace GameV1
             }
             else if (movingLeft == true)
             {
-                if (playerRunningAnimation == playerJumpAnimationFrames)
+                if (playerRunningAnimation == playerRunningAnimationFrames)
                 {
                     Player.BackgroundImage = playerRunningLeft[playerRunningAnimation];
                     playerRunningAnimation = 0;

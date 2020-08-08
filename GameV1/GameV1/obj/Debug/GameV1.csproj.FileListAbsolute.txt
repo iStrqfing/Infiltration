@@ -55,3 +55,4 @@ C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Deb
 C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.csproj.GenerateResource.cache
 C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.exe
 C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.pdb
+C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.StoryLine.resources
