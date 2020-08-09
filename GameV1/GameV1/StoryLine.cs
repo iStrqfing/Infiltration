@@ -14,6 +14,7 @@ namespace GameV1
 {
     public partial class StoryLine : Form
     {
+
         const int playerRunningAnimationFrames = 7;
         int playerRunningAnimation;
 
@@ -145,6 +146,7 @@ namespace GameV1
             }
             else if (rocketSecondPhase) //Second phase
             {
+                pctBoxRocket.Size = new Size(51,104);
                 foreach (Control Clouds in this.Controls)
                 {
                     if (Clouds is PictureBox && Clouds.Tag == "cloud")
@@ -159,11 +161,14 @@ namespace GameV1
                 else
                 {
                     this.BackgroundImageLayout = ImageLayout.Tile;
-                    tmrStartBackground.Start();
+                    //tmrStartBackground.Start();
+
+                    
 
                     rocketSecondPhase = false;
                     rocketThirdPhase = true;
-                    this.BackgroundImage = starBackground[0];
+                    //this.BackgroundImage = starBackground[0];
+                    this.BackgroundImage = Image.FromFile("../../Resources/Game Objects/Story Line/starTile.png");
                     pctBoxRocket.Top = this.Height + 100;
                 }
             }
@@ -176,8 +181,9 @@ namespace GameV1
                 else
                 {
                     this.BackgroundImageLayout = ImageLayout.Tile;
-                    tmrStartBackground.Start();
-                    this.BackgroundImage = starBackground[0];
+                    //tmrStartBackground.Start();
+                    //this.BackgroundImage = starBackground[0];
+                    this.BackgroundImage = Image.FromFile("../../Resources/Game Objects/Story Line/starTile.png");
                     pctBoxRocket.Top = this.Height + 100;
                     rocketThirdPhase = false;
                     rocketFourthPhase = true;

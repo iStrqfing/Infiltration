@@ -13,8 +13,8 @@ namespace GameV1
 {
     public partial class Menu : Form
     {
-        static int height = SystemInformation.VirtualScreen.Height;
-        static int width = SystemInformation.VirtualScreen.Width;
+        static int height;
+        static int width;
 
         bool rocketStartLand;
 
@@ -54,6 +54,8 @@ namespace GameV1
 
         private void Menu_Load(object sender, EventArgs e)
         {
+            width = this.Width;
+            height = this.Height;
             setMenuItemLocations();
             //mainMusic.Play();
             AlignBtns();
@@ -61,10 +63,11 @@ namespace GameV1
         
         private void AlignBtns()
         {
-            //btnPlay.Left = (width / 2) - btnPlay.Width;
-            //btnOptions.Left = (width / 2) - btnPlay.Width;
-            //btnCredits.Left = (width / 2) - btnPlay.Width;
-            //btnQuit.Left = (width / 2) - btnPlay.Width;
+            lblTitle.Left = (width / 2) - lblTitle.Width / 2;
+            btnPlay.Left = (width / 2) - btnPlay.Width / 2;
+            btnOptions.Left = (width / 2) - btnOptions.Width / 2;
+            btnCredits.Left = (width / 2) - btnCredits.Width / 2;
+            btnQuit.Left = (width / 2) - btnQuit.Width / 2;
 
             //btnPlay.Top = (height / 2) + btnPlay.Height - 300;
             //btnOptions.Top = (height / 2) + btnPlay.Height - 225;
@@ -161,6 +164,18 @@ namespace GameV1
         private void tmrWait_Tick(object sender, EventArgs e)
         {
             tmrMenuAnimations.Enabled = true;
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCredits_Click(object sender, EventArgs e)
+        {
+            Credits form = new Credits();
+            form.Show();
+            this.Hide();
         }
     }
 }

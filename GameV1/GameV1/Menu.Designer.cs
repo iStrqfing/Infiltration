@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label lblTitle;
+            this.lblTitle = new System.Windows.Forms.Label();
             this.btnPlay = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
             this.btnCredits = new System.Windows.Forms.Button();
@@ -41,20 +41,20 @@
             this.tmrWait = new System.Windows.Forms.Timer(this.components);
             this.pctBoxRocket = new System.Windows.Forms.PictureBox();
             this.pctBoxBG = new System.Windows.Forms.PictureBox();
-            lblTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pctBoxRocket)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBoxBG)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
-            lblTitle.AutoSize = true;
-            lblTitle.Font = new System.Drawing.Font("Tahoma", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            lblTitle.Location = new System.Drawing.Point(284, 9);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new System.Drawing.Size(387, 77);
-            lblTitle.TabIndex = 19;
-            lblTitle.Text = "Infiltration";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Tahoma", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(284, 9);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(387, 77);
+            this.lblTitle.TabIndex = 19;
+            this.lblTitle.Text = "Infiltration";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // btnPlay
             // 
@@ -84,6 +84,7 @@
             this.btnCredits.TabIndex = 17;
             this.btnCredits.Text = "Credits";
             this.btnCredits.UseVisualStyleBackColor = true;
+            this.btnCredits.Click += new System.EventHandler(this.btnCredits_Click);
             // 
             // btnOptions
             // 
@@ -148,7 +149,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(242)))), ((int)(((byte)(236)))));
             this.ClientSize = new System.Drawing.Size(924, 450);
-            this.Controls.Add(lblTitle);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnPlay);
             this.Controls.Add(this.pctBoxRocket);
             this.Controls.Add(this.btnQuit);
@@ -179,5 +180,6 @@
         private System.Windows.Forms.Timer tmrLandRocket;
         private System.Windows.Forms.Timer tmrWait;
         private System.Windows.Forms.PictureBox pctBoxRocket;
+        private System.Windows.Forms.Label lblTitle;
     }
 }

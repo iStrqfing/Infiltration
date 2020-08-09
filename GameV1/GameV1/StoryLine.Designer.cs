@@ -35,6 +35,7 @@
             this.tmrRocket = new System.Windows.Forms.Timer(this.components);
             this.tmrPlayerMovement = new System.Windows.Forms.Timer(this.components);
             this.tmrStartBackground = new System.Windows.Forms.Timer(this.components);
+            this.lblGameTitle = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -44,7 +45,6 @@
             this.Player = new System.Windows.Forms.PictureBox();
             this.pctBoxCloud2 = new System.Windows.Forms.PictureBox();
             this.pctBoxCloud = new System.Windows.Forms.PictureBox();
-            this.lblGameTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -93,6 +93,16 @@
             // 
             this.tmrStartBackground.Interval = 75;
             this.tmrStartBackground.Tick += new System.EventHandler(this.tmrStartBackground_Tick);
+            // 
+            // lblGameTitle
+            // 
+            this.lblGameTitle.AutoSize = true;
+            this.lblGameTitle.Font = new System.Drawing.Font("Verdana", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGameTitle.Location = new System.Drawing.Point(180, 117);
+            this.lblGameTitle.Name = "lblGameTitle";
+            this.lblGameTitle.Size = new System.Drawing.Size(644, 116);
+            this.lblGameTitle.TabIndex = 8;
+            this.lblGameTitle.Text = "Infiltration";
             // 
             // pictureBox5
             // 
@@ -160,11 +170,11 @@
             // Player
             // 
             this.Player.BackColor = System.Drawing.Color.Transparent;
-            this.Player.BackgroundImage = global::GameV1.Properties.Resources.tile0001;
+            this.Player.BackgroundImage = global::GameV1.Properties.Resources.tile000__1_;
             this.Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Player.Location = new System.Drawing.Point(882, 325);
+            this.Player.Location = new System.Drawing.Point(882, 342);
             this.Player.Name = "Player";
-            this.Player.Size = new System.Drawing.Size(54, 63);
+            this.Player.Size = new System.Drawing.Size(30, 46);
             this.Player.TabIndex = 5;
             this.Player.TabStop = false;
             // 
@@ -189,16 +199,6 @@
             this.pctBoxCloud.TabIndex = 7;
             this.pctBoxCloud.TabStop = false;
             this.pctBoxCloud.Tag = "cloud";
-            // 
-            // lblGameTitle
-            // 
-            this.lblGameTitle.AutoSize = true;
-            this.lblGameTitle.Font = new System.Drawing.Font("Verdana", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGameTitle.Location = new System.Drawing.Point(180, 117);
-            this.lblGameTitle.Name = "lblGameTitle";
-            this.lblGameTitle.Size = new System.Drawing.Size(644, 116);
-            this.lblGameTitle.TabIndex = 8;
-            this.lblGameTitle.Text = "Infiltration";
             // 
             // StoryLine
             // 

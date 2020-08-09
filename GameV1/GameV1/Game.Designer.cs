@@ -108,14 +108,13 @@
             // 
             // tmrPlayerMovement
             // 
-            this.tmrPlayerMovement.Enabled = true;
             this.tmrPlayerMovement.Interval = 10;
             this.tmrPlayerMovement.Tick += new System.EventHandler(this.tmrPlayerMovement_Tick);
             // 
             // tmrPlayerAnimations
             // 
             this.tmrPlayerAnimations.Enabled = true;
-            this.tmrPlayerAnimations.Interval = 50;
+            this.tmrPlayerAnimations.Interval = 1000;
             this.tmrPlayerAnimations.Tick += new System.EventHandler(this.tmrPlayerAnimations_Tick_1);
             // 
             // pictureBox5
@@ -175,7 +174,7 @@
             this.Player.BackColor = System.Drawing.Color.Transparent;
             this.Player.BackgroundImage = global::GameV1.Properties.Resources.tile0001;
             this.Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Player.Location = new System.Drawing.Point(238, 265);
+            this.Player.Location = new System.Drawing.Point(238, 299);
             this.Player.Name = "Player";
             this.Player.Size = new System.Drawing.Size(54, 63);
             this.Player.TabIndex = 2;
@@ -259,9 +258,9 @@
             this.txtScore.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScore.Location = new System.Drawing.Point(12, 23);
             this.txtScore.Name = "txtScore";
-            this.txtScore.Size = new System.Drawing.Size(107, 25);
+            this.txtScore.Size = new System.Drawing.Size(95, 25);
             this.txtScore.TabIndex = 10;
-            this.txtScore.Text = "Score: 0";
+            this.txtScore.Text = "Gold: 0";
             // 
             // label1
             // 
@@ -440,9 +439,9 @@
             this.pctBoxMine.BackColor = System.Drawing.Color.Transparent;
             this.pctBoxMine.BackgroundImage = global::GameV1.Properties.Resources.mine_1;
             this.pctBoxMine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pctBoxMine.Location = new System.Drawing.Point(614, 321);
+            this.pctBoxMine.Location = new System.Drawing.Point(614, 336);
             this.pctBoxMine.Name = "pctBoxMine";
-            this.pctBoxMine.Size = new System.Drawing.Size(60, 44);
+            this.pctBoxMine.Size = new System.Drawing.Size(41, 29);
             this.pctBoxMine.TabIndex = 15;
             this.pctBoxMine.TabStop = false;
             this.pctBoxMine.Tag = "mine";

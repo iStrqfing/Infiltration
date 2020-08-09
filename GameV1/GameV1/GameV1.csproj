@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Credits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Credits.Designer.cs">
+      <DependentUpon>Credits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Game.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     <Compile Include="StoryLine.Designer.cs">
       <DependentUpon>StoryLine.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Credits.resx">
+      <DependentUpon>Credits.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Game.resx">
       <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +217,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Game Objects\Story Line\SingleCloud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Game Objects\Story Line\starTile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Player\Idle\tile000 %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

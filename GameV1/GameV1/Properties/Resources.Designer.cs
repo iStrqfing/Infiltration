@@ -283,6 +283,16 @@ namespace GameV1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap starTile {
+            get {
+                object obj = ResourceManager.GetObject("starTile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap testCharacter {
             get {
                 object obj = ResourceManager.GetObject("testCharacter", resourceCulture);
@@ -306,6 +316,16 @@ namespace GameV1.Properties {
         internal static System.Drawing.Bitmap tile000 {
             get {
                 object obj = ResourceManager.GetObject("tile000", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tile000__1_ {
+            get {
+                object obj = ResourceManager.GetObject("tile000 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

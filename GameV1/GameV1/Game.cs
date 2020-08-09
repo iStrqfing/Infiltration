@@ -48,13 +48,16 @@ namespace GameV1
 
         
 
-        bool jumping, movingRight, movingLeft, fall, rotated, playerAbleToJump, portalOpen;
+        bool gameStarted, jumping, movingRight, movingLeft, fall, rotated, playerAbleToJump, portalOpen;
         bool keyFound, openDoor, paused, explode;
 
         const int playerIdleAnimationFrames = 4;
         const int playerJumpAnimationFrames = 3;
         const int playerRunningAnimationFrames = 7;
         const int playerShootingAnimationFrames = 5;
+
+        const int playerDieAnimationFrames = 6;
+        int playerDieAnimation = 6;
 
         const int mineIdleAnimationFrames = 1;
         const int mineExplosionAnimationFrames = 6;
@@ -65,6 +68,7 @@ namespace GameV1
         const int portalActiveAnimationFrames = 17;
 
         int playerIdleAnimation, playerJumpAnimation, playerRunningAnimation, playerShootingAnimation, mineIdleAnimation, mineExplosionAnimation, portalIdleAnimation, portalActiveAnimation;
+       
 
         /// <summary>
         /// Player animations
@@ -74,6 +78,7 @@ namespace GameV1
         List<Image> playerRunningRight = new List<Image>();
         List<Image> playerRunningLeft = new List<Image>();
         List<Image> playerShooting = new List<Image>();
+        List<Image> playerDie = new List<Image>();
 
 
         /// <summary>
@@ -117,7 +122,45 @@ namespace GameV1
         List<Control> coins = new List<Control>();
         List<Control> portal = new List<Control>();
 
-        
+        private void Game_Load(object sender, EventArgs e)
+        {
+            this.DoubleBuffered = true;
+            Player.Visible = false;
+            mainMusic.Play();
+
+            loadImages();
+
+            loadGameObjects();
+
+            loadGameDesign();
+        }
+
+        private void loadGameObjects()
+        {
+            foreach (Control gameObject in this.Controls)
+            {
+                if (gameObject is PictureBox && gameObject.Tag == "platform" || gameObject.Tag == "elevator" || gameObject.Tag == "solidPlatform")
+                {
+                    platforms.Add(gameObject);
+                }
+                if (gameObject is PictureBox && (string)gameObject.Tag == "platform" || (string)gameObject.Tag == "elevator" || (string)gameObject.Tag == "gameObject" || (string)gameObject.Tag == "mine" || (string)gameObject.Tag == "solidPlatform" || (string)gameObject.Tag == "coin" || (string)gameObject.Tag == "key" || (string)gameObject.Tag == "portal" || gameObject is Label && (string)gameObject.Tag == "gameObject")
+                {
+                    gameItems.Add(gameObject);
+                }
+                if (gameObject is PictureBox && gameObject.Tag == "coin")
+                {
+                    coins.Add(gameObject);
+                }
+                if (gameObject is PictureBox && gameObject.Tag == "key")
+                {
+                    key.Add(gameObject);
+                }
+                if (gameObject is PictureBox && gameObject.Tag == "portal")
+                {
+                    coins.Add(gameObject);
+                }
+            }
+        }
 
         private void loadImages()
         {
@@ -138,7 +181,10 @@ namespace GameV1
             {
                 playerShooting.Add(Image.FromFile(image.FullName));
             }
-
+            foreach (FileInfo image in new DirectoryInfo("../../Resources/Player/Death").GetFiles())
+            {
+                playerDie.Add(Image.FromFile(image.FullName));
+            }
 
             //Mine
             foreach (FileInfo image in new DirectoryInfo("../../Resources/Game Objects/traps/mine/Idle").GetFiles())
@@ -187,6 +233,23 @@ namespace GameV1
             foreach (Image image in playerIdleRotated)
             {
                 image.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            }
+        }
+
+        private void loadGameDesign()
+        {
+            pnlPaused.Visible = false;
+
+            Player.BringToFront();
+            Player.Refresh();
+
+
+            foreach (Control x in this.Controls)
+            {
+                if (x is Label)
+                {
+                    x.BringToFront();
+                }
             }
         }
 
@@ -245,12 +308,25 @@ namespace GameV1
                 if (mineExplosionAnimation > mineExplosionAnimationFrames)
                 {
                     explodingMine.Dispose();
+                    tmrPlayerAnimations.Stop();
+                    tmrPlayerMovement.Stop();
+                    Player.Size = new Size(54, 63);
+                    if (playerDieAnimation > playerDieAnimationFrames)
+                    {
+                        Player.Dispose();
+                        playerDeath();
+                        tmrExplosion.Stop();
+                    }
+                    else
+                    {
+                        Player.BackgroundImage = playerDie[playerDieAnimation];
+                        playerDieAnimation++;
+                    }
                 }
                 else
                 {
                     explodingMine.BackgroundImage = mineExplosion[mineExplosionAnimation];
                     mineExplosionAnimation++;
-                    Player.Top -= 110;
                 }
             }
             
@@ -287,169 +363,22 @@ namespace GameV1
                         explode = true;
                         explodingMine = gameObject;
                         gameObject.Size = new Size(240, 176);
-                        gameObject.Left -= 70;
-                        gameObject.Top -= 130;
-                        gameObject.BringToFront();
-
-                        
-                        
-                    }
+                        gameObject.Left -= 85;
+                        gameObject.Top -= 150;
+                        gameObject.BringToFront();                                              
+                   }
                 }
-            }
-            
+            }          
+        }      
 
-        }
-
-
-        private void tmrPlayerAnimations_Tick_1(object sender, EventArgs e)
+        private void tmrGame_Tick(object sender, EventArgs e)
         {
-            if (movingRight == true)
+            txtScore.Text = $"Gold: {score}";
+
+            if (Player.Location.Y > height + 100)
             {
-                if (playerRunningAnimation == playerRunningAnimationFrames)
-                {
-                    Player.BackgroundImage = playerRunningRight[playerRunningAnimation];
-                    playerRunningAnimation = 0;
-                }
-                else
-                {
-                    Player.BackgroundImage = playerRunningRight[playerRunningAnimation];
-                    playerRunningAnimation++;
-                }
-
+                playerDeath();
             }
-            else if (movingLeft == true)
-            {
-                if (playerRunningAnimation == playerRunningAnimationFrames)
-                {
-                    Player.BackgroundImage = playerRunningLeft[playerRunningAnimation];
-                    playerRunningAnimation = 0;
-                }
-                else
-                {
-                    Player.BackgroundImage = playerRunningLeft[playerRunningAnimation];
-                    playerRunningAnimation++;
-                }
-            }
-            else if (jumping == true)
-            {
-                if (rotated == false)
-                {
-                    if (playerJumpAnimation == playerJumpAnimationFrames - 1)
-                    {
-                        Player.BackgroundImage = playerJump[playerJumpAnimation];
-                        playerJumpAnimation = 0;
-                    }
-                    else
-                    {
-                        Player.BackgroundImage = playerJump[playerJumpAnimation];
-                        playerJumpAnimation++;
-                    }
-                }
-                else
-                {
-                    if (rotated == false)
-                    {
-                        if (playerJumpAnimation == playerJumpAnimationFrames - 1)
-                        {
-                            Player.BackgroundImage = playerJumpRotated[playerJumpAnimation];
-                            playerJumpAnimation = 0;
-                        }
-                        else
-                        {
-                            Player.BackgroundImage = playerJumpRotated[playerJumpAnimation];
-                            playerJumpAnimation++;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                if (rotated == false)
-                {
-                    if (playerIdleAnimation == playerJumpAnimationFrames)
-                    {
-                        Player.BackgroundImage = playerIdle[playerIdleAnimation];
-                        playerIdleAnimation = 0;
-                    }
-                    else
-                    {
-                        Player.BackgroundImage = playerIdle[playerIdleAnimation];
-                        playerIdleAnimation++;
-                    }
-                }
-                else
-                {
-                    if (playerIdleAnimation == playerJumpAnimationFrames)
-                    {
-                        Player.BackgroundImage = playerIdleRotated[playerIdleAnimation];
-                        playerIdleAnimation = 0;
-                    }
-                    else
-                    {
-                        Player.BackgroundImage = playerIdleRotated[playerIdleAnimation];
-                        playerIdleAnimation++;
-                    }
-
-                }
-
-            }
-        }
-
-        private void loadGameObjects()
-        {
-            foreach (Control gameObject in this.Controls)
-            {
-                if (gameObject is PictureBox && gameObject.Tag == "platform" || gameObject.Tag == "elevator" || gameObject.Tag == "solidPlatform")
-                {
-                    platforms.Add(gameObject);
-                }
-                if (gameObject is PictureBox && (string)gameObject.Tag == "platform" || (string)gameObject.Tag == "elevator" || (string)gameObject.Tag == "gameObject" || (string)gameObject.Tag == "mine" || (string)gameObject.Tag == "solidPlatform" || (string)gameObject.Tag == "coin" || (string)gameObject.Tag == "key" || (string)gameObject.Tag == "portal" || gameObject is Label && (string)gameObject.Tag == "gameObject" )
-                {
-                    gameItems.Add(gameObject);
-                }
-                if (gameObject is PictureBox && gameObject.Tag == "coin")
-                {
-                    coins.Add(gameObject);
-                }
-                if (gameObject is PictureBox && gameObject.Tag == "key")
-                {
-                    key.Add(gameObject);
-                }
-                if (gameObject is PictureBox && gameObject.Tag == "portal")
-                {
-                    coins.Add(gameObject);
-                }
-            }
-        }
-
-        private void loadGameDesign()
-        {
-            pnlPaused.Visible = false;
-
-            Player.BringToFront();
-            Player.Refresh();
-
-
-            foreach (Control x in this.Controls)
-            {
-                if (x is Label)
-                {
-                    x.BringToFront();
-                }
-            }
-        }
-
-        private void Game_Load(object sender, EventArgs e)
-        {
-            this.DoubleBuffered = true;
-
-            mainMusic.Play();
-
-            loadImages();
-
-            loadGameObjects();
-
-            loadGameDesign();
         }
 
         private void startStopTimers(bool start)
@@ -463,7 +392,8 @@ namespace GameV1
                 tmrPlayerMovement.Start();
                 tmrLeftMovement.Start();
                 tmrRightMovement.Start();
-            } else
+            }
+            else
             {
                 tmrPlayerAnimations.Stop();
                 tmrAnimations.Stop();
@@ -472,27 +402,6 @@ namespace GameV1
                 tmrPlayerMovement.Stop();
                 tmrLeftMovement.Stop();
                 tmrRightMovement.Stop();
-            }
-        }
-
-        public class DoubleBufferedPanel : Panel
-        {
-            public DoubleBufferedPanel()
-            {
-                this.SetStyle(ControlStyles.AllPaintingInWmPaint |
-                    ControlStyles.OptimizedDoubleBuffer |
-                    ControlStyles.UserPaint, true);
-            }
-        }
-
-
-        private void tmrGame_Tick(object sender, EventArgs e)
-        {
-            txtScore.Text = $"Score: {score}";
-
-            if (Player.Location.Y > height + 100)
-            {
-                playerDeath();
             }
         }
 
@@ -620,11 +529,125 @@ namespace GameV1
                     }
                 } 
         }
-    
-        
 
+        private void tmrPlayerAnimations_Tick_1(object sender, EventArgs e)
+        {
+            if (gameStarted == false)
+            {                               
+                Console.WriteLine(playerDieAnimation);
+                tmrPlayerAnimations.Interval = 100;
+                Player.Size = new Size(54, 63);
+                if (playerDieAnimation == 0)
+                {
+                    Player.BackgroundImage = playerDie[playerDieAnimation];
+                    gameStarted = true;
+                    tmrPlayerMovement.Enabled = true;
+                    tmrPlayerAnimations.Interval = 50;
+                    Player.Size = new Size(30, 46);
+                }
+                else
+                {
+                    Player.Visible = true;
+                    
+                    Player.BackgroundImage = playerDie[playerDieAnimation];
+                    playerDieAnimation--;
+                }
+            } else if (movingRight == true)
+            {
+                tmrPlayerAnimations.Interval = 50;
+                if (playerRunningAnimation == playerRunningAnimationFrames)
+                {
+                    Player.BackgroundImage = playerRunningRight[playerRunningAnimation];
+                    playerRunningAnimation = 0;
+                }
+                else
+                {
+                    Player.BackgroundImage = playerRunningRight[playerRunningAnimation];
+                    playerRunningAnimation++;
+                }
 
+            }
+            else if (movingLeft == true)
+            {
+                tmrPlayerAnimations.Interval = 50;
+                if (playerRunningAnimation == playerRunningAnimationFrames)
+                {
+                    Player.BackgroundImage = playerRunningLeft[playerRunningAnimation];
+                    playerRunningAnimation = 0;
+                }
+                else
+                {
+                    Player.BackgroundImage = playerRunningLeft[playerRunningAnimation];
+                    playerRunningAnimation++;
+                }
+            }
+            else if (jumping == true)
+            {
+                tmrPlayerAnimations.Interval = 50;
+                if (rotated == false)
+                {
+                    if (playerJumpAnimation == playerJumpAnimationFrames - 1)
+                    {
+                        Player.BackgroundImage = playerJump[playerJumpAnimation];
+                        playerJumpAnimation = 0;
+                    }
+                    else
+                    {
+                        Player.BackgroundImage = playerJump[playerJumpAnimation];
+                        playerJumpAnimation++;
+                    }
+                }
+                else
+                {
+                    if (rotated == false)
+                    {
+                        if (playerJumpAnimation == playerJumpAnimationFrames - 1)
+                        {
+                            Player.BackgroundImage = playerJumpRotated[playerJumpAnimation];
+                            playerJumpAnimation = 0;
+                        }
+                        else
+                        {
+                            Player.BackgroundImage = playerJumpRotated[playerJumpAnimation];
+                            playerJumpAnimation++;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (rotated == false)
+                {
+                    tmrPlayerAnimations.Interval = 100;
+                    if (playerIdleAnimation == playerJumpAnimationFrames)
+                    {
+                        Player.BackgroundImage = playerIdle[playerIdleAnimation];
+                        playerIdleAnimation = 0;
+                    }
+                    else
+                    {
+                        Player.BackgroundImage = playerIdle[playerIdleAnimation];
+                        playerIdleAnimation++;
+                    }
+                }
+                else
+                {
+                    tmrPlayerAnimations.Interval = 100;
+                    if (playerIdleAnimation == playerJumpAnimationFrames)
+                    {
+                        Player.BackgroundImage = playerIdleRotated[playerIdleAnimation];
+                        playerIdleAnimation = 0;
+                    }
+                    else
+                    {
+                        Player.BackgroundImage = playerIdleRotated[playerIdleAnimation];
+                        playerIdleAnimation++;
+                    }
 
+                }
+
+            }
+        }
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
         {
@@ -702,6 +725,16 @@ namespace GameV1
             if (e.KeyCode == Keys.F)
             {
                 openDoor = false;
+            }
+        }
+
+        public class DoubleBufferedPanel : Panel
+        {
+            public DoubleBufferedPanel()
+            {
+                this.SetStyle(ControlStyles.AllPaintingInWmPaint |
+                    ControlStyles.OptimizedDoubleBuffer |
+                    ControlStyles.UserPaint, true);
             }
         }
     }
