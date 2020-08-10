@@ -57,3 +57,5 @@ C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Deb
 C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.pdb
 C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.StoryLine.resources
 C:\Users\iStrqfing\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.Credits.resources
+C:\Users\7jrandal\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.Credits.resources
+C:\Users\7jrandal\Dropbox\Programming\GitHub\Infiltration\GameV1\GameV1\obj\Debug\GameV1.StoryLine.resources

@@ -19,12 +19,13 @@ namespace GameV1
         bool rocketStartLand;
 
         const int menuItemsYOffset = 450;
-        const int menuScrollSpeed = 2;
+        const int menuScrollSpeed = 4;
         int currentMenuItemsYOffset;
 
         const int rocketX = 64;
         const int rocketY = 48;
         const int rocketOffset = 200;
+        const int rocketLandSpeed = 2;
 
         SoundPlayer mainMusic = new SoundPlayer(@"../../Resources/Music/Battle in the winter.wav");
 
@@ -36,6 +37,15 @@ namespace GameV1
 
         
         //public double Volume { get { return Volume; } set { Volume = 0.1; } }
+
+            private void stopTimers()
+        {
+            tmrLandRocket.Stop();
+            tmrLeft.Stop();
+            tmrRight.Stop();
+            tmrWait.Stop();
+
+        }
 
         private void setMenuItemLocations()
         {
@@ -109,6 +119,7 @@ namespace GameV1
 
         private void btnPlay_Click_2(object sender, EventArgs e)
         {
+            stopTimers();
             mainMusic.Stop();
             Game form = new Game();
             form.Show();
@@ -141,9 +152,10 @@ namespace GameV1
                     }
                     currentMenuItemsYOffset += menuScrollSpeed;
                 }
-                else if (currentMenuItemsYOffset == menuItemsYOffset)
+                else if (currentMenuItemsYOffset >= menuItemsYOffset)
                 {
                     tmrLandRocket.Stop();
+                    pctBoxBG.Location = new Point(0, 0);
                     tmrWait.Enabled = true;
                     pctBoxRocket.Height = 109;
                     pctBoxRocket.BackgroundImage = Image.FromFile("../../Resources/Game Objects/Story Line/rocketOff.png");
@@ -152,7 +164,7 @@ namespace GameV1
             {
                 if (pctBoxRocket.Location.Y != rocketY)
                 {
-                    pctBoxRocket.Top += 2;
+                    pctBoxRocket.Top += rocketLandSpeed;
                 } else
                 {
                     rocketStartLand = true;
@@ -173,6 +185,7 @@ namespace GameV1
 
         private void btnCredits_Click(object sender, EventArgs e)
         {
+            stopTimers();
             Credits form = new Credits();
             form.Show();
             this.Hide();

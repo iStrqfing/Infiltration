@@ -288,17 +288,18 @@ namespace GameV1
 
         private void playerDeath()
         {
+            startStopTimers(false);
+
+            foreach (Control x in this.Controls)
+            {
+                x.Dispose();
+            }
             mainMusic.Stop();
             Menu form = new Menu();
             form.Show();
             this.Hide();
 
-            startStopTimers(false);
-        
-            foreach (Control x in  this.Controls)
-            {
-                x.Dispose();
-            }
+            
         }
 
         private void tmrExplosion_Tick(object sender, EventArgs e)
@@ -392,6 +393,7 @@ namespace GameV1
                 tmrPlayerMovement.Start();
                 tmrLeftMovement.Start();
                 tmrRightMovement.Start();
+                tmrMine.Start();
             }
             else
             {
@@ -402,6 +404,7 @@ namespace GameV1
                 tmrPlayerMovement.Stop();
                 tmrLeftMovement.Stop();
                 tmrRightMovement.Stop();
+                tmrMine.Stop();
             }
         }
 

@@ -84,6 +84,7 @@ namespace GameV1
 
         private void tmrScroll_Tick(object sender, EventArgs e)
         {
+
             foreach (Control x in this.Controls)
             {
                 if (x is Label)
