@@ -78,9 +78,12 @@
             this.Controls.Add(this.lblPresents);
             this.Controls.Add(this.pctBoxLogo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SplashScreen";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Game";
+            this.Text = "Infiltration By Joshua Randall";
             this.Load += new System.EventHandler(this.SplashScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pctBoxLogo)).EndInit();
             this.ResumeLayout(false);

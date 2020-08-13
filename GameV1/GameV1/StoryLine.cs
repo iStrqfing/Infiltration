@@ -166,7 +166,7 @@ namespace GameV1
                     
 
                     rocketSecondPhase = false;
-                    rocketThirdPhase = true;
+                    rocketFourthPhase = true;
                     //this.BackgroundImage = starBackground[0];
                     this.BackgroundImage = Image.FromFile("../../Resources/Game Objects/Story Line/starTile.png");
                     pctBoxRocket.Top = this.Height + 100;

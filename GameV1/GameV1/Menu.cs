@@ -75,7 +75,6 @@ namespace GameV1
         {
             lblTitle.Left = (width / 2) - lblTitle.Width / 2;
             btnPlay.Left = (width / 2) - btnPlay.Width / 2;
-            btnOptions.Left = (width / 2) - btnOptions.Width / 2;
             btnCredits.Left = (width / 2) - btnCredits.Width / 2;
             btnQuit.Left = (width / 2) - btnQuit.Width / 2;
 

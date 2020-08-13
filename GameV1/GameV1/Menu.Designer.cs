@@ -33,7 +33,6 @@
             this.btnPlay = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
             this.btnCredits = new System.Windows.Forms.Button();
-            this.btnOptions = new System.Windows.Forms.Button();
             this.tmrMenuAnimations = new System.Windows.Forms.Timer(this.components);
             this.tmrLeft = new System.Windows.Forms.Timer(this.components);
             this.tmrRight = new System.Windows.Forms.Timer(this.components);
@@ -68,7 +67,7 @@
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(413, 285);
+            this.btnQuit.Location = new System.Drawing.Point(415, 227);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(124, 49);
             this.btnQuit.TabIndex = 18;
@@ -78,22 +77,13 @@
             // 
             // btnCredits
             // 
-            this.btnCredits.Location = new System.Drawing.Point(413, 230);
+            this.btnCredits.Location = new System.Drawing.Point(415, 172);
             this.btnCredits.Name = "btnCredits";
             this.btnCredits.Size = new System.Drawing.Size(124, 49);
             this.btnCredits.TabIndex = 17;
             this.btnCredits.Text = "Credits";
             this.btnCredits.UseVisualStyleBackColor = true;
             this.btnCredits.Click += new System.EventHandler(this.btnCredits_Click);
-            // 
-            // btnOptions
-            // 
-            this.btnOptions.Location = new System.Drawing.Point(413, 175);
-            this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(124, 49);
-            this.btnOptions.TabIndex = 16;
-            this.btnOptions.Text = "Options";
-            this.btnOptions.UseVisualStyleBackColor = true;
             // 
             // tmrMenuAnimations
             // 
@@ -154,12 +144,14 @@
             this.Controls.Add(this.pctBoxRocket);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnCredits);
-            this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.pctBoxBG);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Menu";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Menu";
+            this.Text = "Infiltration By Joshua Randall";
             this.Load += new System.EventHandler(this.Menu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pctBoxRocket)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBoxBG)).EndInit();
@@ -175,7 +167,6 @@
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Button btnQuit;
         private System.Windows.Forms.Button btnCredits;
-        private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.PictureBox pctBoxBG;
         private System.Windows.Forms.Timer tmrLandRocket;
         private System.Windows.Forms.Timer tmrWait;

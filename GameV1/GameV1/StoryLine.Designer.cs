@@ -218,9 +218,13 @@
             this.Controls.Add(this.pctBoxCloud2);
             this.Controls.Add(this.pctBoxCloud);
             this.Controls.Add(this.lblGameTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "StoryLine";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StoryLine";
+            this.Text = "Infiltration By Joshua Randall";
             this.Load += new System.EventHandler(this.StoryLine_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

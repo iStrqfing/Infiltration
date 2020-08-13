@@ -57,7 +57,6 @@
             this.pctBoxElevator = new System.Windows.Forms.PictureBox();
             this.pnlPaused = new System.Windows.Forms.Panel();
             this.btnQuit = new System.Windows.Forms.Button();
-            this.btnOptions = new System.Windows.Forms.Button();
             this.btnResume = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
@@ -350,7 +349,6 @@
             // 
             this.pnlPaused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(167)))), ((int)(((byte)(205)))), ((int)(((byte)(12)))));
             this.pnlPaused.Controls.Add(this.btnQuit);
-            this.pnlPaused.Controls.Add(this.btnOptions);
             this.pnlPaused.Controls.Add(this.btnResume);
             this.pnlPaused.Controls.Add(this.label7);
             this.pnlPaused.Location = new System.Drawing.Point(393, 98);
@@ -361,23 +359,13 @@
             // btnQuit
             // 
             this.btnQuit.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuit.Location = new System.Drawing.Point(44, 163);
+            this.btnQuit.Location = new System.Drawing.Point(44, 120);
             this.btnQuit.Name = "btnQuit";
             this.btnQuit.Size = new System.Drawing.Size(82, 37);
             this.btnQuit.TabIndex = 1;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
-            // 
-            // btnOptions
-            // 
-            this.btnOptions.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOptions.Location = new System.Drawing.Point(44, 120);
-            this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(82, 37);
-            this.btnOptions.TabIndex = 1;
-            this.btnOptions.Text = "Options";
-            this.btnOptions.UseVisualStyleBackColor = true;
             // 
             // btnResume
             // 
@@ -498,9 +486,12 @@
             this.Controls.Add(this.pctBackground);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Game";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Game";
+            this.Text = "Infiltration By Joshua Randall";
             this.Load += new System.EventHandler(this.Game_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Game_KeyUp);
@@ -558,7 +549,6 @@
         private System.Windows.Forms.Panel pnlPaused;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnQuit;
-        private System.Windows.Forms.Button btnOptions;
         private System.Windows.Forms.Button btnResume;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;

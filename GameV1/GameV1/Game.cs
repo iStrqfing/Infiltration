@@ -49,7 +49,7 @@ namespace GameV1
         
 
         bool gameStarted, jumping, movingRight, movingLeft, fall, rotated, playerAbleToJump, portalOpen;
-        bool keyFound, openDoor, paused, explode;
+        bool keyFound, openDoor, paused, explode, exploded;
 
         const int playerIdleAnimationFrames = 4;
         const int playerJumpAnimationFrames = 3;
@@ -306,12 +306,20 @@ namespace GameV1
         {
             if (explode)
             {
+                tmrPlayerAnimations.Stop();
+                tmrPlayerMovement.Stop();
+                
                 if (mineExplosionAnimation > mineExplosionAnimationFrames)
                 {
-                    explodingMine.Dispose();
-                    tmrPlayerAnimations.Stop();
-                    tmrPlayerMovement.Stop();
-                    Player.Size = new Size(54, 63);
+                    if (exploded == false)
+                    {
+                        explodingMine.Dispose();
+                        Player.Size = new Size(54, 63);
+                        Player.Left -= 10;
+                        Player.Top -= 15;
+                        exploded = true;
+                    }                  
+
                     if (playerDieAnimation > playerDieAnimationFrames)
                     {
                         Player.Dispose();

@@ -38,7 +38,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.tmrScroll = new System.Windows.Forms.Timer(this.components);
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -139,16 +138,6 @@
             this.label8.TabIndex = 1;
             this.label8.Text = "Level Art By Ansimuz.com";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(284, 270);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(362, 29);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Level Art By Ansimuz.com";
-            // 
             // tmrScroll
             // 
             this.tmrScroll.Interval = 30;
@@ -190,7 +179,6 @@
             this.ClientSize = new System.Drawing.Size(924, 461);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
@@ -204,8 +192,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Credits";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Credits";
+            this.Text = "Infiltration By Joshua Randall";
             this.Load += new System.EventHandler(this.Credits_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -223,7 +212,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Timer tmrScroll;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
